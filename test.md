@@ -1,4 +1,5 @@
 ---title: Apache Yarn学习笔记notebook: 技术相关tags:---
+
 Yarn 最基本的想法是将资源管理的功能与job调度与监控的功能分放在不同的领域。 以此为基础， 就产生了全局的ResourceManager(RM)和针对每个应用的ApplicationMaster(AM)。这里的应用包括单独的job或者多个job的有向无环图。ResourceManager 和 NadeManager 构成了数据计算框架。 ResourcerManager 拥有决定系统中所有应用享有资源的最终权利。 NodeManager是每天机器的客户端框架， 它的职责是管理containers, 监控资源的使用情况(cpu, memory, disk, network)以及将这些状态上报给ResourceManager/Scheduler上。
 
 每个应用都会有一个ApplicationMaster, 它的任务时向ResourceManager申请资源， 与NodeManager一同执行任务并对其监控。
@@ -31,8 +32,18 @@ ResourceManager在分配好的container中加载一个applicationMaster, applica
 
 在application执行过程中， ApplicationMaster通过NMClientAsync与NodeManagers通讯。 所有的containers通过NMClientAsync.CallbackHandler来驱动。 一个典型的回调驱动可以驱动客户端start， stop，status update和error。 ApplicationMaster也会将执行的进度通过AMRMClientAsync.CallbackHandler的getProgress()告诉给ResourceManager。
 
-+ Client<-->ResourceManagerBy using YarnClient objects.+ ApplicationMaster<-->ResourceManagerBy using AMRMClientAsync objects, handling events asynchronously by AMRMClientAsync.CallbackHandler+ ApplicationMaster<-->NodeManagerLaunch containers. Communicate with NodeManagers by using NMClientAsync objects, handling container events by NMClientAsync.CallbackHandler
++ Client<-->ResourceManagerBy 
+using YarnClient objects.
++ ApplicationMaster<-->ResourceManagerBy 
+using AMRMClientAsync objects, handling events asynchronously by AMRMClientAsync.CallbackHandler
++ ApplicationMaster<-->NodeManagerLaunch containers. 
+Communicate with NodeManagers by using NMClientAsync objects, handling container events by NMClientAsync.CallbackHandler
 
 ## Writing a Simple Yarn Application
 
-+ 构造并启动yarn-client  ``` YarnClient yarnClient = YarnClient.createYarnClient(); yarnClient.init(conf); yarnClient.start();  ```
++ 构造并启动yarn-client  
+
+``` 
+YarnClient yarnClient = YarnClient.createYarnClient(); yarnClient.init(conf); yarnClient.start();  
+
+```
