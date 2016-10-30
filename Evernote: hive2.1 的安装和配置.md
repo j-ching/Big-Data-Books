@@ -1,7 +1,7 @@
 ---
 title: hive2.1 的安装和配置
 notebook: 技术相关
-tags:
+tags: hive
 ---
 
 目前hive的最新版本是2.1.0， 你可以下载tar包安装，也可以通过源码编译安装
