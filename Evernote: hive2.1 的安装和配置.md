@@ -400,7 +400,7 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 	
 	ALTER TABLE visit_log ADD PARTITION (date='2016-10-17') LOCATION '2016-10-17';  
 
-** 创建外部表的时候，location指明数据文件的目录，目录中包含数据文件。 
+** 创建外部表的时候，location指明数据文件的目录，目录中包含数据文件。 **
 
 ### hive表metadata中文乱码的问题解决
 
