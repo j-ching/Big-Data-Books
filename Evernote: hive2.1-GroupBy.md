@@ -5,7 +5,7 @@ tags:hive
 ---
 
 # Group By Syntax
-	
+
 	groupByClause: GROUP BY groupByExpression (, groupByExpression)*
 	groupByExpression: expression
 	groupByQuery: SELECT expression (, expression)* FROM src groupByClause?
@@ -15,13 +15,13 @@ groupByExpression的列需要通过名称来指定，不能使用位置编号。
 ### Simple Examples
 
 计算表的行数
-	
+
 	SELECT COUNT(*) FROM table2;
 
 在不包含HIVE-287的版本中，需要使用COUNT(1)来代替COUNT(*)
 
 按性别来统计用户的数量
-	
+
 	INSERT OVERWRITE TABLE pv_gender_sum
 	SELECT pv_users.gender, count (DISTINCT pv_users.userid)
 	FROM pv_users
@@ -46,7 +46,7 @@ groupByExpression的列需要通过名称来指定，不能使用位置编号。
 使用group by时， select 只能包含group by 中的字段， 当然，select 中可以包含任意的聚合函数
 
 例如：
-	
+
 	CREATE TABLE t1(a INTEGER, b INTGER);
 
 group by 查询
@@ -75,7 +75,7 @@ group by 查询
 
 ### Multi-Group-By Inserts
 aggregations 和 select 的输出可以进一步被输入到表中或者hdfs文件中(需要使用hdfs组件)
-	
+
 	FROM pv_users
 	INSERT OVERWRITE TABLE pv_gender_sum
 	  SELECT pv_users.gender, count(DISTINCT pv_users.userid)
@@ -100,24 +100,4 @@ aggregations 和 select 的输出可以进一步被输入到表中或者hdfs文�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+详细如下
