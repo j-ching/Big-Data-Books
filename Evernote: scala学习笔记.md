@@ -102,7 +102,6 @@ tags:scala
 	//可变参数中
 	def capitalizeAll(args: String*) = {
 	  args.map { arg =>
-	  	 
 	    arg.capitalize
 	  }
 	}
@@ -112,10 +111,6 @@ tags:scala
 ```
 
 + scala单例模式
++ 数组类相关函数
 
-
-
-
-
-
-
+mkString() 将集合元素表示为以某种形式分隔的字符串

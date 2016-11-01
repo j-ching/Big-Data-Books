@@ -36,7 +36,7 @@ notebook: 技术相关
 
 #### 修改zk参数
 
-	 
+
 	tickTime=2000
 	initLimit=10
 	syncLimit=5
@@ -96,7 +96,7 @@ notebook: 技术相关
 
 
 #### 修改hdfs-site.xml
-	
+
 	<configuration>
 	    <property>
 	      <name>dfs.nameservices</name>
@@ -335,7 +335,7 @@ notebook: 技术相关
 #### 启动journalnode
 
 在thadoop-uelrcx-host1执行
-	
+
 	sbin/hadoop-daemons.sh start journalnode
 
 或者单独进入thadoop-uelrcx-host2,thadoop-uelrcx-host3,thadoop-uelrcx-host4 中分别执行
@@ -347,10 +347,10 @@ jps检查是否有journalnode 进程
 #### 格式化HDFS
 
 在thadoop-uelrcx-host1执行
-	
-	bin/hadoop namenode -format 
 
-启动namenode 
+	bin/hadoop namenode -format
+
+启动namenode
 
 	sbin/hadoop-daemon.sh start namenode
 
@@ -371,7 +371,7 @@ jps检查是否有journalnode 进程
 #### 启动yarn
 
 在thadoop-uelrcx-host1执行下列命令， 启动yarn
-	
+
 	sbin/start-yarn.sh
 
 ## HDFS 支持多地址网络
@@ -385,8 +385,8 @@ jps检查是否有journalnode 进程
 
 #### Ensuring HDFS Daemons Bind All Interfaces
 
-默认情况下,hdfs 节点既可以使用hostname， 也可以使用IP。 无论哪种情况，hdfs 进程都只会绑定一个单独的ip，以保证其他网络无法访问。 
-在多网络地址环境下的解决方式，强制服务节点绑定IP网段 0.0.0.0, 不设置端口。 
+默认情况下,hdfs 节点既可以使用hostname， 也可以使用IP。 无论哪种情况，hdfs 进程都只会绑定一个单独的ip，以保证其他网络无法访问。
+在多网络地址环境下的解决方式，强制服务节点绑定IP网段 0.0.0.0, 不设置端口。
 
 	<property>
 	  <name>dfs.namenode.rpc-bind-host</name>
@@ -451,7 +451,7 @@ jps检查是否有journalnode 进程
 #### DataNodes use HostNames when connecting to other DataNodes
 
 特殊情况下， namanode无法通过ip来访问datanode， 此时可以配置hostname，由DNS来访问datanode
-	
+
 	<property>
 	  <name>dfs.datanode.use.datanode.hostname</name>
 	  <value>true</value>
@@ -460,7 +460,7 @@ jps检查是否有journalnode 进程
 	  </description>
 	</property>
 
-#### Ensuring yarn Daemons Bind All Interfaces 
+#### Ensuring yarn Daemons Bind All Interfaces
 
 	<property>
 	  <name>yarn.nodemanager.bind-host</name>
@@ -483,7 +483,7 @@ jps检查是否有journalnode 进程
 #### 禁用hbase自带的zk
 
 修改conf/hbase-env.sh
-	
+
 	export HBASE_MANAGES_ZK=false
 
 #### 修改hbase-site.xml
@@ -508,24 +508,24 @@ jps检查是否有journalnode 进程
 	</configuration>
 
 #### 修改regionservers
-	
+
 	thadoop-uelrcx-host2
 	thadoop-uelrcx-host3
 	thadoop-uelrcx-host4
 
 #### 将hbase安装目录分发了四台机器上
 在thadoop-uelrcx-host1启动hbase
-	
+
 	bin/start-hbase.sh
 
 # hive 安装配置
 
 #### 修改hive-env.sh，设置HADOOP_HOME
-	
+
 	HADOOP_HOME=/Users/junjie.cheng/Developers/hadoop-2.6.0-cdh5.8.0
 
 #### 设置hive-site.xml
-	
+
 	<!-- 数据仓库connect -->
 	<property>
         <name>javax.jdo.option.ConnectionURL</name>
@@ -616,11 +616,11 @@ jps检查是否有journalnode 进程
 #### 启动hiveserver2
 
 1. 通过schematool初始化数据源
-	
+
 	$HIVE_HOME/bin/schematool -dbType mysql -initSchema
 
-2. 启动hiveserver2 
-	
+2. 启动hiveserver2
+
 	$HIVE_HOME/bin/hiveserver2
 
 3. 通过beeline 连接hive
@@ -629,7 +629,7 @@ jps检查是否有journalnode 进程
 
 # spark 安装及配置
 
-##  spark on yarn 
+##  spark on yarn
 
 
 #### 修改spark-env.sh, 设置
@@ -643,7 +643,7 @@ jps检查是否有journalnode 进程
 
 ## spark  standalone
 
-#### 修改slaves	
+#### 修改slaves
 
 	thadoop-uelrcx-host2
 	thadoop-uelrcx-host3
@@ -652,6 +652,3 @@ jps检查是否有journalnode 进程
 ### 启动spark集群
 
 	sbin/start-all.sh
-
-
-
