@@ -1,8 +1,9 @@
----
 title: spark 笔记
 notebook: 技术相关
-tags:
----
+tags: spark
+
+[TOC]
+
 ## maven依赖
 
 	<dependency>
@@ -73,14 +74,14 @@ tags:
 	  1000
 
 #### Run a Python application on a Spark standalone cluster
-	
+
 	./bin/spark-submit \
 	  --master spark://207.184.161.138:7077 \
 	  examples/src/main/python/pi.py \
 	  1000
 
 #### Run on a Mesos cluster in cluster deploy mode with supervise
-	
+
 	./bin/spark-submit \
 	  --class org.apache.spark.examples.SparkPi \
 	  --master mesos://207.184.161.138:7077 \
@@ -96,7 +97,7 @@ tags:
 
 关闭spark应用可以调用SparkContext的stop() 方法或者直接退出应用 System.exit(0) 或者 sys.exit()
 
-## spark操作类型 
+## spark操作类型
 
 RDD的操作可以分为转化操作和行为操作， 转化操作生成新的RDD，行为操作会真正的执行计算
 
@@ -140,7 +141,7 @@ parallelize() 把程序中一个已有的集合传给SparkContext
 
 ## 行为操作
 
-   + reduce(func) 
+   + reduce(func)
    + colect()  返回RDD中的所有元素
    + count() 返回RDD中元素的个数
    + countByKey()
@@ -155,18 +156,18 @@ parallelize() 把程序中一个已有的集合传给SparkContext
    + aggregate()  与reduce一样，但是返回不同类型的函数
    + foreach(func) 对RDD中的每个元素使用给定的函数
    + saveAsTextFile(path)
-   + saveAsSequenceFile(path) 
-   + saveAsObjectFile(path) 
+   + saveAsSequenceFile(path)
+   + saveAsObjectFile(path)
 
 
 ## 持久化
    persist()调用不会触发强制求值
-   scala和java 默认会把数据以序列化的形式缓存在jvm的堆空间中。 
+   scala和java 默认会把数据以序列化的形式缓存在jvm的堆空间中。
    当我们让spark持久化存储一个RDD的时候，计算出RDD的节点会分别保存他们所求的分区数据，如果一个有持久化数据的节点发生故障，spark会在需要用到混粗的数据时重新计算丢失的数据分区。如果希望节点故障的情况不会拖累我们的执行速度，也可以把数据被飞到多个节点上。
 
    org.apache.spark.storage.StorageLevel
 
-   + MEMORY_ONLY 
+   + MEMORY_ONLY
    + MEMORY_ONLY_SER
    + MEMORY_AND_DISK
    + MEMORY_AND_DISK_SER
@@ -174,16 +175,14 @@ parallelize() 把程序中一个已有的集合传给SparkContext
 
    如果缓存的数据太多，内存中放不下，spark自动利用最近最少使用（LRU）的缓存策略把最老的分区从内存中移除。对于仅把数据存放在内存的缓存级别，下一次要用到已经被移除的分区时，这些分区就需要重新计算。 但是对于使用使用内存与磁盘的缓存级别分区来说，被移除的分区都会写入磁盘，不论哪一种情况都不必担心你的作业因为缓存了太多数据而被打断。不过缓存不要的数据会导致有用的数据被移除内存，带来更多重算的时间开销。
 
-## upersist() 
+## upersist()
 手动把持久化的RDD从缓存移除
 
 ## stats()
 打印RDD的总数，平均数，最大值，最小值等
 
-## span() 
+## span()
 用第一个特定的符号将一行拆分为俩部分
 
-##lookup() 
+##lookup()
 查找数据
-
-

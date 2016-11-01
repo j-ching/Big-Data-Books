@@ -1,14 +1,14 @@
----
 title: spark 编译
 notebook: 技术相关
-tags:spark
----
+tags: spark
+
+[TOC]
 
 # 编译Apache Spark
 
 ## Apache Maven
 
-基于maven构建apache spark。 需要maven3.3.9及以上和java7+ 
+基于maven构建apache spark。 需要maven3.3.9及以上和java7+
 
 ### 设置maven 内存
 
@@ -35,13 +35,13 @@ Note:
 
 ### build/mvn
 spark现在自带了maven安装， 简化了spark的构建和发布，目录在build/ 下。 脚本会自动的下载和安装所有必须的依赖（maven, scala, 和 zinc）。 之前安装过的maven是可以使用的，然而，你需要适当的将scala和zinc的版本降低，以适应当前编译的版本需要。 build/mvn 通过以下参数控制，使得很容易去编译之前的一个版本，类如， 编译一个版本的spark如下：
-	
+
 	./build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -DskipTests clean package
 
 ## Building a Runnable Distribution
 
 创建一个和下载页下载的包相当的可运行的分支，可以通过根目录下的 ``` ./dev/make-distribution.sh ``` 来完成。 如：
-	
+
 	./dev/make-distribution.sh --name custom-spark --tgz -Psparkr -Phadoop-2.4 -Phive -Phive-thriftserver -Pyarn
 
 更多信息可运行 ``` ./dev/make-distribution.sh --help ```
@@ -81,7 +81,7 @@ Hadoop version  | Profile required
 
 ## Building With Hive and JDBC Support
 
-为了能够使用hive的jdbc server和控制台来调用spark sql， 构建的时候需要在原有参数的基础上添加 ```-Phive``` 和 ``` Phive-thriftserver ``` 俩个属性。 默认spark支持hive1.2.1 
+为了能够使用hive的jdbc server和控制台来调用spark sql， 构建的时候需要在原有参数的基础上添加 ```-Phive``` 和 ``` Phive-thriftserver ``` 俩个属性。 默认spark支持hive1.2.1
 
 	# Apache Hadoop 2.4.X with Hive 1.2.1 support
 	./build/mvn -Pyarn -Phadoop-2.4 -Dhadoop.version=2.4.0 -Phive -Phive-thriftserver -DskipTests clean package
@@ -100,7 +100,7 @@ Hadoop version  | Profile required
 ## 单独编译子模块
 
 通过mvn -pl 选项可以单独编译spark子模块
-	
+
 	./build/mvn -pl :spark-streaming_2.11 clean install
 
 ## Continuous Compilation
@@ -121,9 +121,9 @@ Hadoop version  | Profile required
 	$ ../build/mvn scala:cc
 
 ## Speeding up Compilation with Zinc
-zinc 是sbt增量编译的长期运行版，当它在后台运行的时候，它可以加速像spark这样的基于scala开发的项目的编译速度。用maven经常的重新编译spark的开发者，一定会对zinc感兴趣的。  
+zinc 是sbt增量编译的长期运行版，当它在后台运行的时候，它可以加速像spark这样的基于scala开发的项目的编译速度。用maven经常的重新编译spark的开发者，一定会对zinc感兴趣的。
 
-执行build/mvn ， zinc会被自动的下载并安装， zinc进程默认绑定3030端口，可以通过设置```ZINC_PORT```来设置， zinc进程会在第一次build/mvn的时候被调起， 当执行 ```build/zinc-<version>/bin/zinc -shutdown ``` 被关闭。 
+执行build/mvn ， zinc会被自动的下载并安装， zinc进程默认绑定3030端口，可以通过设置```ZINC_PORT```来设置， zinc进程会在第一次build/mvn的时候被调起， 当执行 ```build/zinc-<version>/bin/zinc -shutdown ``` 被关闭。
 
 ## Building with SBT
 maven 是官方推荐的构建打包spark的方式， 但是sbt也慢慢被支持起来，因为sbt能够提供不断的迭代编译，所以sbt的呼声越来越高
@@ -133,7 +133,7 @@ sbt的构建也是源于maven的pom文件，所以sbt构建的时候使用和mav
 
 ## Encrypted Filesystems
 在一个已编码的文件系统上构建spark的时候，会报 ``` Filename too long ```的错误。 需要在pom.xml的scala-maven-plugin下，添加如下配置
-	
+
 	<arg>-Xmax-classfile-name</arg>
 	<arg>128</arg>
 

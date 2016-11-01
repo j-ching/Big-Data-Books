@@ -1,15 +1,15 @@
----
 title: hive2.1 的安装和配置
 notebook: 技术相关
 tags: hive
----
+
+[TOC]
 
 目前hive的最新版本是2.1.0， 你可以下载tar包安装，也可以通过源码编译安装
 
 ## 安装条件
-+ java1.7 
-+ hadoop 2.* 
-+ hive 可以运行在linux和windows环境下。 mac一般用于开发环境. 
++ java1.7
++ hadoop 2.*
++ hive 可以运行在linux和windows环境下。 mac一般用于开发环境.
 
 ## 安装hive稳定版本
 
@@ -18,7 +18,7 @@ tags: hive
 	 $ tar -xzvf hive-x.y.z.tar.gz
 
 将HIVE_HOME变量指定到hive的安装目录下
-	
+
 	$ cd hive-x.y.z
   	$ export HIVE_HOME={{pwd}}
 
@@ -47,12 +47,12 @@ tags: hive
 	conf/ (configuration files)
 	examples/ (sample input and query files)
 	hcatalog / (hcatalog installation)
-	scripts / (upgrade scripts for hive-metastore) 
+	scripts / (upgrade scripts for hive-metastore)
 
 #### 编译branch-1分支
 branch-1 的hive支持Hadoop 1.x 和 2.x， 通过maven profile 来区分hadoop的版本， 编译hadoop 1.x 的版本使用hadoop-1, 编译hadoop 2.x 的版本使用 hadoop-2 , 如编译hadoop 1.x的时候命令如下：
 
-	$ mvn clean package -Phadoop-1,dist  
+	$ mvn clean package -Phadoop-1,dist
 
 #### 编译0.13之前的版本
 编译0.13之前的版本，需要使用apache ant, 支持hadoop0.20
@@ -101,7 +101,7 @@ hive需要hadoop，所以
 
 ### 运行[hiveserver2](http://hiveserver2) 和 Beeline
 从hive2.1开始， 运行时需要通过schematool命令初始化。 类如，要使用derby作为数据源
-	
+
 	$ $HIVE_HOME/bin/schematool -dbType <db type> -initSchema
 
 hiveserver2 有它自己的命令行叫beeline。 hive命令行已经不建议使用了, beeline开始被更多人使用。 beeline支持多用户， 安全，且hiveserver2 包含了更多的功能。 运行hiveserver2 和beeline
@@ -117,13 +117,13 @@ beeline 以hiveserver2的url(默认为默认为```localhost:10000```)开头， �
 **需要先启动hiveserver2， 才能通过beeline连接**
 
 #### 出现的相关问题
-	
+
 1. 通过beeline连接hiveserver2 时，报错 ```hadoop is not allowed to impersonate anonymou```
 
 	解决方案：
 	+ 修改```core-site.xml```文件
-		
-		```  
+
+		```
 		  <property>
 		    <name>hadoop.proxyuser.hadoop.hosts</name>
 		    <value>*</value>
@@ -137,7 +137,7 @@ beeline 以hiveserver2的url(默认为默认为```localhost:10000```)开头， �
 	+ 重启hdfs
 
 2. ***通过beeline 连接hiveserver， 创建hbase外部表时，无法连接到hbase启动的一个节点， 而通过hive cli 执行时没有问题的***
-	
+
 	在确保各节点联通性的情况下，如果还出现上述问题， 很有可能是版本不匹配造成的，及hive与hbase的版本兼容问题。 为了不再版本上造成困扰，尽量选CDH统一的包;
 
 
@@ -147,10 +147,10 @@ hive0.11.0以及之后的版本启动HCatalog 如下：
 	$ $HIVE_HOME/hcatalog/sbin/hcat_server.sh
 
 hive0.11.0之前的版本启动HCatalog如下：
-	
+
 	 $ $HIVE_HOME/hcatalog/bin/hcat
 
-启动hcatalog_web 
+启动hcatalog_web
 
 	 $ $HIVE_HOME/hcatalog/sbin/webhcat_server.sh
 
@@ -164,16 +164,16 @@ hive0.11.0之前的版本启动HCatalog如下：
 + 变更hive配置信息的方式有
 	* 修改 ``` hive-site.xml ```, 配置你想要的参数
 	* 使用 set 命令
-	* 使用如下的语法调用hive，beeline和hiveserver2 
+	* 使用如下的语法调用hive，beeline和hiveserver2
 		- ```$ bin/hive --hiveconf x1=y1 --hiveconf x2=y2  //this sets the variables x1 and x2 to y1 and y2 respectively```
 		- ```$ bin/hiveserver2 --hiveconf x1=y1 --hiveconf x2=y2  //this sets server-side variables x1 and x2 to y1 and y2 respectively```
 		- ```$ bin/beeline --hiveconf x1=y1 --hiveconf x2=y2  //this sets client-side variables x1 and x2 to y1 and y2 respectively.```
 	* 设置HIVE_OPTS 环境变量， 如 ```"--hiveconf x1=y1 --hiveconf x2=y2```
-	
+
 ### 运行时配置
 +  hive查询是通过map-reduce 执行的， 所以hive查询也受到hadoop配置的影响
 +  hive命令行和beeline 中的set 可以设置任意的hadoop或者hive的配置参数 如
-	 
+
 	beeline> SET mapred.job.tracker=myhost.mycompany.com:50030;
     beeline> SET -v;
 
@@ -185,7 +185,7 @@ hive 大多数的查询都被转化为的mr的job， 然后提交到mr集群来�
 该参数用于指向多个节点的mr集群。hadoop 也提供了一个比较优雅的选项，在用户自己的工作空间运行mr job， 对于小的数据集，这种做法是非常有用的， 因为本地模式执行比提交job到大集群上要快的多。但是，本地模式只能运行一个reduce, 而且在处理大数据集的时候会比较慢。
 
 从release0.7开始，hive全面支持本地模式运行， 可以通过如下命令来启动本地模式
-	
+
 	 hive> SET mapreduce.framework.name=local;
 
 默认本地模式不启动的， 在启动本地模式后，hive会分析查询中每个mr的size， 当满足以下条件时，进入本地模式执行
@@ -203,7 +203,7 @@ log默认存储的目录为``` /tmp/<user.name>:```
 + ```/tmp/<user.name>/hive.log```
 
 更改log目录，设置``` $HIVE_HOME/conf/hive-log4j.properties ``` 中的hive.log.dir
-	
+
 	hive.log.dir=<other_location>
 
 hive log默认不会打印在控制台，如果需要打印在控制台，需要启动客户端的时候，添加参数
@@ -228,14 +228,14 @@ hive 默认的把每个查询session的日志保存在``` /tmp/<user.name>/``` �
 hive在hadoop集群上执行查询的日志，是由hadoop 配置来控制的。 通常，hadoop会在每个map和reduce执行完成后产生一个日志文件，保存在hdfs上。 可以通过job tracker的web UI
 来获取这些日志信息。
 
-当我们采用本地模式时(mapreduce.framework.name=local), hadoop/hive的执行日志都会保存在客户端本地。 从hive release0.6开始， 使用hive-exec-log4j.properties来决定日志的分发， 默认会产生一个日志文件，保存在```/tmp/<user.name>```目录下， 
+当我们采用本地模式时(mapreduce.framework.name=local), hadoop/hive的执行日志都会保存在客户端本地。 从hive release0.6开始， 使用hive-exec-log4j.properties来决定日志的分发， 默认会产生一个日志文件，保存在```/tmp/<user.name>```目录下，
 
 ### Audit Logs
 Audit Logs 用于记录每个metastore api的调用， 日志名为```HiveMetaStore.audit```, 使用log4j来记录日志，地址等级为INFO
 
 ### Perf Logger
 通过PerfLogger来获取性能数据， 日志等级为DEBUG， 通过设置log4j 来获取性能日志
-	
+
 	log4j.logger.org.apache.hadoop.hive.ql.log.PerfLogger=DEBUG
 
 
@@ -277,7 +277,7 @@ REPLACE COLUMNS 替换表中存在的所有列，也可以用于从schema删除�
 	hive> ALTER TABLE invites REPLACE COLUMNS (foo INT COMMENT 'only keep the first column');
 
 删除表
-	
+
 	 hive> DROP TABLE pokes;
 
 ### Metadata Store
@@ -295,7 +295,7 @@ load数据到hive
 加载一个文件到pokes表，文件中含有俩列，通过ctrl-a分割。 'LOCAL' 表示了输入的文件是本地的。 去掉‘LOCAL’， 则表明文件来源于HDFS。 'overwrite' 说明表中的数据会被删除， 如果去掉'overwrite'， 数据会被追加到原有数据后。
 
 注：
-	
+
 	+ load命令会根据schema 对数据做预处理
 	+ 如果load的文件在hdfs， 则会被移到hive控制的文件系统namespace下。
 
@@ -308,7 +308,7 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 
 	hive> LOAD DATA INPATH '/user/myname/kv2.txt' OVERWRITE INTO TABLE invites PARTITION (ds='2008-08-15');
 
-上述命令将数据从HDFS 目录load到表中。 
+上述命令将数据从HDFS 目录load到表中。
 
 ## SQL Operations
 
@@ -322,8 +322,8 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 
 	 hive> INSERT OVERWRITE DIRECTORY '/tmp/hdfs_out' SELECT a.* FROM invites a WHERE a.ds='2008-08-15';
 
-将查询结果覆盖写入到hdfs的/tmp/hdfs_out 目录下。 
-	
+将查询结果覆盖写入到hdfs的/tmp/hdfs_out 目录下。
+
 	 hive> INSERT OVERWRITE LOCAL DIRECTORY '/tmp/local_out' SELECT a.* FROM pokes a;
 
 将查询结果写到本地
@@ -357,7 +357,7 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
   	INSERT OVERWRITE LOCAL DIRECTORY '/tmp/dest4.out' SELECT src.value WHERE src.key >= 300;
 
 ### STREAMING
-	
+
 	hive> FROM invites a INSERT OVERWRITE TABLE events SELECT TRANSFORM(a.foo, a.bar) AS (oof, rab) USING '/bin/cat' WHERE a.ds > '2008-08-09';
 
 通过/bin/cat将数据在map阶段流式的注入， 同样的，我们也可以在reduce阶段注入。
@@ -369,7 +369,7 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 
 ## 实战
 ### 启动hiveserver2
-	
+
 	nohup bin/hive --service hiveserver2 --hiveconf hive.rooter.logger=hive.root.logger=INFO,console > hiveserver2.log &
 
 ### 创建带分区的hive extend table
@@ -379,7 +379,7 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 	CREATE EXTERNAL TABLE visit_log(
 		timestamp String COMMENT "时间",
 		request String COMMENT "请求",
-		path String COMMENT "日志路径", 
+		path String COMMENT "日志路径",
 		size BigInt COMMENT "数据大小",
 		http_host String COMMENT "请求host",
 		host String COMMENT "host",
@@ -392,16 +392,14 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 		version String COMMENT "版本",
 		xff String COMMENT "x-form-forward"
 		)
-	 partitioned by (date string) 
-	 ROW FORMAT DELIMITED FIELDS TERMINATED BY "\001" 
+	 partitioned by (date string)
+	 ROW FORMAT DELIMITED FIELDS TERMINATED BY "\001"
 	 LOCATION "/user/dw/tv";
 
 创建分区
-	
-	ALTER TABLE visit_log ADD PARTITION (date='2016-10-17') LOCATION '2016-10-17';  
+
+	ALTER TABLE visit_log ADD PARTITION (date='2016-10-17') LOCATION '2016-10-17';
 
 **创建外部表的时候，location指明数据文件的目录，目录中包含数据文件**
 
 ### hive表metadata中文乱码的问题解决
-
-

@@ -1,8 +1,9 @@
----
 title: Logstash客户端安装
-tags: ["原创 日志收容"]
+tags: 原创, 日志收容
 notebook: 技术相关
----
+
+[TOC]
+
 
 # LogStash Agent 安装配置
 
@@ -12,8 +13,8 @@ notebook: 技术相关
 # LogStash Pipeline
 
 LogStash Pipeline 包括一个或者多个input, filter 和output。 启动logstash实例的时候，可以通过-f 来指定pipeline 的配置文件 pipeline中input和output是必须要有的，filter是可选的。 input插件负责从数据源获取数据，filter插件按要求处理数据，output插件将处理好的数据写到相应的目标存储。
-    
-    
+
+
     # The # character at the beginning of a line indicates a comment. Use
     # comments to describe your configuration.
     input {
@@ -25,25 +26,25 @@ LogStash Pipeline 包括一个或者多个input, filter 和output。 启动logst
     # }
     output {
     }
-    
-    
+
+
 
 上述的代码框架只包含了input 和 output的空实现，并没有包含实际的功能。 我们可以自己去定义input， filter和output， 来实现我们自己想要实现的功能
 
 **这里我们实现一个将apache 日志收容到es的例子**
 
 ## 配置一个File类型的input插件
-    
-    
+
+
     input {
         file {
             path => "/path/to/logstash-tutorial.log"
-            start_position => beginning 
-            ignore_older => 0 
+            start_position => beginning
+            ignore_older => 0
         }
     }
-    
-    
+
+
 
   1. file input默认监控文件信息的变化，与unix 中的tail -f 类似, 收集整个文件的内容，也可以配置start_position指定数据收集的开始位置。
   2. file input默认会忽略掉一天之前的修改内容， 也可以通过修改配置ignore_older关闭掉这个限制 path 指向你所要收集的文件路径

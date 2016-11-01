@@ -1,8 +1,8 @@
----
 title: hive2.1-Select相关
 notebook: 技术相关
-tags:hive
----
+tags: hive
+
+[TOC]
 
 # Select Syntax
 
@@ -46,7 +46,7 @@ where是boolean表达式，支持数值操作和UDF
 
 ## ALL and DISTINCT Clauses
 
-All 和 DISTINCT 选项用于指明重复的数据是否需要返回。 默认为ALL， 
+All 和 DISTINCT 选项用于指明重复的数据是否需要返回。 默认为ALL，
 
     hive> SELECT col1, col2 FROM t1
     1 3
@@ -63,7 +63,7 @@ All 和 DISTINCT 选项用于指明重复的数据是否需要返回。 默认�
 
 ## Partition Based Queries
 
-table创建分区之后，查询可以在每个分区上运行， 而且只会扫描查询中涉及到的分区。 
+table创建分区之后，查询可以在每个分区上运行， 而且只会扫描查询中涉及到的分区。
 
     SELECT page_views.*
     FROM page_views
@@ -86,12 +86,12 @@ table创建分区之后，查询可以在每个分区上运行， 而且只会�
     SELECT col1 FROM (SELECT col1, SUM(col2) AS col2sum FROM t1 GROUP BY col1) t2 WHERE t2.col2sum > 10
 
 ## LIMIT Clause
-决定查询返回的条数， 返回的条数是随机的。 
+决定查询返回的条数， 返回的条数是随机的。
 
     SELECT * FROM t1 LIMIT 5
 
 + top K 查询
-    
+
     ```
     SET mapred.reduce.tasks = 1
     SELECT * FROM sales SORT BY amount DESC LIMIT 5
@@ -100,4 +100,4 @@ table创建分区之后，查询可以在每个分区上运行， 而且只会�
 ## REGEX Column Specification
 在hive0.13.0之前的版本，默认支持column上的正在表达式， 在0.13.0之后，需要配置资源文件 ```hive.support.quoted.identifiers ``` 为 none
 
-    SELECT `(ds|hr)?+.+` FROM sales 
+    SELECT `(ds|hr)?+.+` FROM sales

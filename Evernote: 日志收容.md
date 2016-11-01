@@ -1,8 +1,9 @@
----
-title:日志收容
+title: 日志收容
 notebook: 技术相关
-tags:flume-ng, logstash, chukwa, scribe,  原创
----
+tags: flume-ng, logstash, chukwa, scribe,  原创
+
+[TOC]
+
 ## 简介
 互联网的发展，带来了业务种类的日新月异，随着业务的增长，随之而来的，就是业务日志指数的递增。一些公司每条业务线， 提供服务的线上服务器就达几百台之多， 每天的日志量超百亿。如何能够将散落在各服务器上的日志数据高效的收集汇总起来， 成了在数据分析处理之前必须解决的问题。
 
@@ -16,7 +17,7 @@ tags:flume-ng, logstash, chukwa, scribe,  原创
 **接下来，我们就来逐一的了解一下这些数据收集框架**
 
 ## chukwa
-chukwa 是apache 开源的针对大规模分布式系统的日志收集和分析的项目， 它建立在hdfs以及mr框架的基础上，完全继承了hadoop的扩展性和稳定性。chukwa还包括了一系列组件，用于监控数据，分析数据和数据可视化等。 
+chukwa 是apache 开源的针对大规模分布式系统的日志收集和分析的项目， 它建立在hdfs以及mr框架的基础上，完全继承了hadoop的扩展性和稳定性。chukwa还包括了一系列组件，用于监控数据，分析数据和数据可视化等。
 架构图如下
 
 ![架构图](http://www.goingio.com/wordpress/wp-content/uploads/2016/08/chukwa_architecture.png)
@@ -28,7 +29,7 @@ chukwa 是apache 开源的针对大规模分布式系统的日志收集和分析
 + 数据分析脚本， 概括hadoop集群的健康状况
 + HICC， chukwa的可视化工具
 
-由于依赖于mr去处理数据，所以chukwa效率注定不会太高，整个数据流在数据处理间断吞吐量急剧下降。 另外，chukwa设计时就没有将它定位为单纯的日志收集工具，而是囊括数据的分析处理， 数据可视化等功能的完整的数据分析框架， 在这样的设计思路下， 数据收集和数据分析俩大任务在优化目标上并不相同，甚至有可能相悖。所以优化效果并不明显。 与其如此，还不如专一的定位在数据收集领域，数据分析和处理等交给其他成熟的框架来实现， 如Hive、Impala等。 也出于这些原因，chukwa并没有被广泛的使用。 
+由于依赖于mr去处理数据，所以chukwa效率注定不会太高，整个数据流在数据处理间断吞吐量急剧下降。 另外，chukwa设计时就没有将它定位为单纯的日志收集工具，而是囊括数据的分析处理， 数据可视化等功能的完整的数据分析框架， 在这样的设计思路下， 数据收集和数据分析俩大任务在优化目标上并不相同，甚至有可能相悖。所以优化效果并不明显。 与其如此，还不如专一的定位在数据收集领域，数据分析和处理等交给其他成熟的框架来实现， 如Hive、Impala等。 也出于这些原因，chukwa并没有被广泛的使用。
 
 ## scribe
 
@@ -60,9 +61,9 @@ scribe将客户端日志组织为类目和信息俩个部分，以此来唯一�
 
 ![架构图](http://www.goingio.com/wordpress/wp-content/uploads/2016/08/QQ20160825-9.png)
 
-从架构图上我们可以了解到， flume-og 有三种角色的节点，代理节点（agent）、收集节点（collector）、主节点（master），agent 从各个数据源收集日志数据，将收集到的数据集中到 collector，然后由收集节点汇总存入 hdfs。master 负责管理 agent，collector 的活动。 
+从架构图上我们可以了解到， flume-og 有三种角色的节点，代理节点（agent）、收集节点（collector）、主节点（master），agent 从各个数据源收集日志数据，将收集到的数据集中到 collector，然后由收集节点汇总存入 hdfs。master 负责管理 agent，collector 的活动。
 仔细看，我们会返现， agent、collector 都由 source、sink 组成，代表在当前节点数据是从 source 传送到 sink， 这也就意味着，节点中没有专门的缓存数据的模块，节点之间的数据阻塞极易发生， 再加上，数据流经的缓解太多，必然会对吞吐造成影响。同时， 为了提高可用性， 引入zk来管理
-agent, collector, master的配置信息，大大增加了使用和维护的成本。 
+agent, collector, master的配置信息，大大增加了使用和维护的成本。
 
 
 ### flume-ng架构图
@@ -79,19 +80,19 @@ agent, collector, master的配置信息，大大增加了使用和维护的成�
 ## logstash
 logstash 是基于实时数据管道能力的数据收集引擎， 它可以从不同的数据源整理数据，统一写入到你选择的目标存储中。 清洗和规范你的数据，方便下游分析和可视化使用。
 
-架构图如下： 
+架构图如下：
 
 ![架构图](http://www.goingio.com/wordpress/wp-content/uploads/2016/08/basic_logstash_pipeline-1.png)
 
 从架构图看，logstash和flume-ng的设计思想很相似， flume-ng的agent由source,channel,sink三部分组成， 而logstash实例由input,filter和output三部分组成。 input同source一样，用于从数据源中收集数据。
 filter和channel略有不同，filter是对input收集上来的数据做一定的处理后交给output。 默认的filter有 grok filter(用于结构化数据)， mutate filter（用于更改数据结构，如数据字段更名，移除，替换等），drop filter（彻底删除数据），clone filter(拷贝数据)， geoip filter(通过ip地址获取额外的信息)等。 output将filter处理后的数据送入的指定的存储或者下一个logstash的实例。
 
-logstash同flume-ng一样，在实现日志收集功能的基础上，通过实现和更改logstash的input, filter, 和output插件， 可以将一些我们想要的功能，很方便的嵌入到数据收集的整个过程中， 加速我们对大量的多样话数据的感知能力。 
+logstash同flume-ng一样，在实现日志收集功能的基础上，通过实现和更改logstash的input, filter, 和output插件， 可以将一些我们想要的功能，很方便的嵌入到数据收集的整个过程中， 加速我们对大量的多样话数据的感知能力。
 
 大多数情况下， logstash作为elk套件的日志收集框架，实现实时日志分析时使用。
 
 ## Kafka
-kafka 是 linkedin 2010开源的基于发布订阅模式分布式消息系统，之后加入apache阵营，更名为apache kafka. 
+kafka 是 linkedin 2010开源的基于发布订阅模式分布式消息系统，之后加入apache阵营，更名为apache kafka.
 其架构如下：
 ![架构图](http://www.goingio.com/wordpress/wp-content/uploads/2016/08/QQ20160825-6.png)
 整个系统由三部分节点组成：
@@ -99,7 +100,7 @@ kafka 是 linkedin 2010开源的基于发布订阅模式分布式消息系统，
 + **broker** 在磁盘上存储维护各种topic的消息队列
 + **comsumer** 订阅了某个topic的消费者从broker中拉取消息并进行处理
 
-broker对topic的管理是基于顺序读写磁盘文件而实现的，在kafka内部，支持对topic进行数据分片(partition), 每个数据分片都是一个有序的， 不可更改的尾部追加消息队列。队列内每个消息都被分配一个在本数据分片的唯一ID，也叫offset， 消息生产者在产生消息时可以指定数据分片， 具体方法可以采用round robin 随机分配， 也可以根据一定的应用语义逻辑分配， 比如可以按照用户uid进行哈希分配，这样可以保证同一用户的数据会放入相同的队列中， 便于后续处理。 也正因为如此， kafka有着极高的吞吐量。 
+broker对topic的管理是基于顺序读写磁盘文件而实现的，在kafka内部，支持对topic进行数据分片(partition), 每个数据分片都是一个有序的， 不可更改的尾部追加消息队列。队列内每个消息都被分配一个在本数据分片的唯一ID，也叫offset， 消息生产者在产生消息时可以指定数据分片， 具体方法可以采用round robin 随机分配， 也可以根据一定的应用语义逻辑分配， 比如可以按照用户uid进行哈希分配，这样可以保证同一用户的数据会放入相同的队列中， 便于后续处理。 也正因为如此， kafka有着极高的吞吐量。
 在kafka的基础上实现日志收容有着天然的优势：
 + **方便实现** 开发收集数据的producer和写数据的consumer即可， producer从日志服务器上收集日志，送入broker， consumer从broker拉取数据，写入到目标存储
 + **高性能** 天然的高吞吐，较强的可扩展性和高可用性， 消息传递低延迟

@@ -1,8 +1,9 @@
----
 title: hue 安装和使用
 notebook: 技术相关
-tags:hue
----
+tags: hue
+
+[TOC]
+
 # hue
 
 ### hue安装准备

@@ -1,9 +1,12 @@
----
 title: Spark MLlib学习笔记-分类和回归
 notebook: 技术相关
-tags:spark
----
-spark.mllib  提供了 二分类，多分类和回归分析的方法。 
+tags: spark
+
+[TOC]
+
+# spark.mllib
+
+spark.mllib  提供了 二分类，多分类和回归分析的方法。
 
 | Problem Type        | Supported Methods           |
 | ------------- |:-------------:|
@@ -21,3 +24,5 @@ spark.mllib  提供了 二分类，多分类和回归分析的方法。
 	* [gradient-boosted树](http://spark.apache.org/docs/1.6.0/mllib-ensembles.html#gradient-boosted-trees-gbts)
 + [朴素贝叶斯](http://spark.apache.org/docs/1.6.0/mllib-naive-bayes.html)
 + [保序回归](http://spark.apache.org/docs/1.6.0/mllib-isotonic-regression.html)
+
+# spark.mlib

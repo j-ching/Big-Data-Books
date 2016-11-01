@@ -1,13 +1,13 @@
----
 title: spark SQL学习笔记
 notebook: 技术相关
-tags:
----
+tags: spark
+
+[TOC]
 
 # Overview
 
-spark sql是spark的一个模块， 用于处理结构化得数据。 与spark rdd api 不同， spark SQl针对结构化数据提供了更多接口。spark sql 应用一些额外的信息来提升性能。 这里有一下几种方式来使用spark sql，包括sql， DataFrames API 和DataSets API。 
-	
+spark sql是spark的一个模块， 用于处理结构化得数据。 与spark rdd api 不同， spark SQl针对结构化数据提供了更多接口。spark sql 应用一些额外的信息来提升性能。 这里有一下几种方式来使用spark sql，包括sql， DataFrames API 和DataSets API。
+
 ### SQL
 Spark SQL可以用于sql查询， 包括正常的SQL或者HiveQL。  Spark SQL也可以用来从已安装的hive中读取数据。 使用编程语言运行SQL， 运行结果会返回一个DataFrame。 SQL可以通过命令行方式运行或者通过JDBC/ODBC
 
@@ -21,19 +21,19 @@ Datasets是在spark1.6中新增的实验性接口， 意在提高RDD的优势，
 
 ### Starting Point: SQLContext
 
-创建sqlContext 
+创建sqlContext
 
 	val sc: SparkContext // An existing SparkContext.
 	val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
-除了sqlContext之外，也可以创建hiveContext， 在sqlcontxt之上提供了更多的附加功能， 包括： 使用完整的HiveQL， 使用hive的UDF，从hive表中读取数据。  使用HiveContext， 无需安装hive， 只要数据源在SQLContext可用即可。 HiveContext 只是在spark构建的时候，打包了所有hive的依赖。如果这些依赖对你的应用来说不是一个问题，那推荐使用hiveContext。 
+除了sqlContext之外，也可以创建hiveContext， 在sqlcontxt之上提供了更多的附加功能， 包括： 使用完整的HiveQL， 使用hive的UDF，从hive表中读取数据。  使用HiveContext， 无需安装hive， 只要数据源在SQLContext可用即可。 HiveContext 只是在spark构建的时候，打包了所有hive的依赖。如果这些依赖对你的应用来说不是一个问题，那推荐使用hiveContext。
 
 SQL中的一些特定的变量可以通过```spark.sql.dialect```选项来设置。 在SQLContext中可以通过setConf来设置参数， 在SQL的命令行则可以通过```set key=value``` 来设置。
 
 ### Creating DataFrames
 
 对于sqlContext， 应用可以从RDD， hive Table， 以及数据源来创建DataFrames
-	
+
 	val sc: SparkContext // An existing SparkContext.
 	val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
@@ -90,9 +90,9 @@ SQL中的一些特定的变量可以通过```spark.sql.dialect```选项来设置
 	// 30   1
 
 ### Running SQL Queries Programmatically
-	
+
 	val sqlContext = ... // An existing SQLContext
-	val df = sqlContext.sql("SELECT * FROM table")	
+	val df = sqlContext.sql("SELECT * FROM table")
 
 ### Creating Datasets
 Datasets 与RDD很相似，但不同于Java Serialization与 kryo的序列化方式，Datasets使用一个特殊的序列化方式Encoder
@@ -111,13 +111,13 @@ Datasets 与RDD很相似，但不同于Java Serialization与 kryo的序列化方
 	val people = sqlContext.read.json(path).as[Person]
 
 ### Interoperating with RDDs
-spark sql 支持俩种方式将RDD转为DataFrames。 第一种方式是使用反射根据object中包含的类型来推断schema。 这种方式适用于你已经清楚的知道schema的情况下， 代码更简洁，更有效。 
+spark sql 支持俩种方式将RDD转为DataFrames。 第一种方式是使用反射根据object中包含的类型来推断schema。 这种方式适用于你已经清楚的知道schema的情况下， 代码更简洁，更有效。
 
 第二种方式是通过编程接口来构造一个schema，作用于已经存在的RDD上。 这种方式比较复杂，适用于列与类型都不清楚的情况下构造DataFrames。
 
-##### Inferring the Schema Using Reflection 
+##### Inferring the Schema Using Reflection
 spark SQL提供的scala接口支持自动的将包含case class的RDD转为DataFrame。 case class定义了table的schema， case class的变量名被读取出来通过反射变为列明。 case classes可嵌套，或者包含复杂的数据类型，如Sequences或者Array。 RDD可以转为DataFrame，并注册成table。
-	
+
 	// sc is an existing SparkContext.
 	val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 	// this is used to implicitly convert an RDD to a DataFrame.
@@ -151,7 +151,7 @@ spark SQL提供的scala接口支持自动的将包含case class的RDD转为DataF
 1. 有原始的RDD创建行RDD
 2. 根据第一步创建的RDD结构创建schema 结构类型 StructType
 3. 通过sqlContext的createDataFrame方式 将schema 应用于行的RDD上
- 
+
 	// sc is an existing SparkContext.
 	val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
@@ -189,7 +189,7 @@ spark SQL提供的scala接口支持自动的将包含case class的RDD转为DataF
 	results.map(t => "Name: " + t(0)).collect().foreach(println)
 
 # Data Sources
-spark SQL 支持对 DataFrame接口加载的各种数据源进行操作。DataFrame 可以被当做一个普通的RDD来操作，也可以注册成为一个临时的表通过sql来访问数据。 
+spark SQL 支持对 DataFrame接口加载的各种数据源进行操作。DataFrame 可以被当做一个普通的RDD来操作，也可以注册成为一个临时的表通过sql来访问数据。
 
 ### Generic Load/Save Functions
 
@@ -208,12 +208,12 @@ spark SQL 支持对 DataFrame接口加载的各种数据源进行操作。DataFr
 
 ### Save Modes
 
-	在保存数据的时候，可以设置saveMode， 用来指明如何处理现有的数据。 
+	在保存数据的时候，可以设置saveMode， 用来指明如何处理现有的数据。
 	+ SaveMode.ErrorIfExists (default)	  "error"   当向数据源保存一个DataFrame时，如果数据已经存在， 就是抛出异常
 	+ SaveMode.Append 					  "append"  当向数据源保存一个DataFrame时，如果数据已经存在， 则会追加到现有数据之后
 	+ SaveMode.Overwrite 				  "overwrite"  当向数据源保存一个DataFrame时，如果数据已经存在， 则会覆盖现有的数据
 	+ SaveMode.Ignore 					  "ignore"	   当向数据源保存一个DataFrame时，如果数据已经存在， 则不执行相应的操作
- 
+
 ### Saving to Persistent Tables
 
 使用HiveContext时， 可以将DataFrame通过saveAsTable命令存储在持久化表中。 不同于registerTempTable， saveAsTable将会保存DataFrame的内容数据，并在HiveMetastore中创建一个指向数据的指针。 当spark程序重新启动后， 只要连接之前的metastore， 持久化表会一直存在。 通过sqlContext的table方法可以重新从持久化表数据中创建table。saveAsTable 默认创建一张可管理的表，也就是说，表数据的位置由metastore来管理。 当表删除后，metadata的数据也会自动删除。
@@ -280,7 +280,7 @@ spark1.6开始，默认的spark只会在给定路径下寻找分区字段。如�
 与ProtocolBuffer, Avro, and Thrift类似， Parquet也支持schema演化。 用户可以先设置一个简单的schema， 然后逐渐的添加更多需要的字段。 慢慢的，用户会发现有很多的Parquet files，且schema不相同。 Parquet数据源会自动检测到这些年情况，并对这些文件schema进行合并
 
 因为合并schema是一个比较费时的操作，所以从1.5.0开始，默认关闭了这个选项。 在下面情况下，你可以选择开启
-1. 当读取Parquet fields 
+1. 当读取Parquet fields
 2. 在全局变量```spark.sql.parquet.mergeSchema```被设置为true时
 
 	// sqlContext from the previous example is used in this example.
@@ -318,7 +318,7 @@ spark1.6开始，默认的spark只会在给定路径下寻找分区字段。如�
 	sqlContext.refreshTable("my_table")
 
 ##### Configuration
-	
+
 	+ spark.sql.parquet.binaryAsString
 	+ spark.sql.parquet.int96AsTimestamp
 	+ spark.sql.parquet.cacheMetadata
@@ -383,14 +383,12 @@ spark1.6开始，默认的spark只会在给定路径下寻找分区字段。如�
 	SPARK_CLASSPATH=postgresql-9.3-1102-jdbc41.jar bin/spark-shell
 
 参数
-	
+
 	+ url
 	+ dbtable
 	+ driver
 	+ partitionColumn, lowerBound, upperBound, numPartitions
 	+ fetchSize
-	
+
 
 	val jdbcDF = sqlContext.read.format("jdbc").options(Map("url" -> "jdbc:postgresql:dbserver", "dbtable" -> "schema.tablename")).load()
-
-

@@ -1,8 +1,8 @@
----
-title: reids 消息队列实现	
+title: reids 消息队列实现
 notebook: 技术相关
-tags:
----
+tags: redis
+
+[TOC]
 
 # reids 消息队列俩种方式
 
@@ -11,5 +11,3 @@ tags:
 
 ##  利用list来实现
 * 可以实现分布式消费
-
-

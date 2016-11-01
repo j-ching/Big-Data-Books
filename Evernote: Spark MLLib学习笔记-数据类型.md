@@ -1,15 +1,16 @@
----
 title: spark MLlib 学习笔记-DataType
 notebook: 技术相关
-tags:
----
+tags: spark
+
+[TOC]
+
 MLlib 是spark的机器学习库， 包含了很多公用的学习算法和组件，包括classification(分类), regression(回归), clustering(聚类), collaborative filtering(协同过滤), dimensionality reduction(降维)，也有一些低级别的原语以及高级别的管道API
 提供俩个packages:
 
 + spark.mllib 提供了RDD级别的原生的API
 + spark.ml 提供了DataFrames级别的高级的API来构造ml管道
 
-推荐使用spark.ml包，因为DataFrames API 更灵活和多样化。但我们在开发spark.ml的同时开发spark.mllib. 
+推荐使用spark.ml包，因为DataFrames API 更灵活和多样化。但我们在开发spark.ml的同时开发spark.mllib.
 
 # Data Types - MLlib
 
@@ -55,7 +56,7 @@ MLlib支持从LIBSVM格式读取训练样本，这些数据默认由[LIBSVM](htt
 	label index1:value1 index2:value2 ...
 
 MLUtils.loadLibSVMFile 读取LIBSVM格式的寻列样本
-	
+
 	import org.apache.spark.mllib.regression.LabeledPoint
 	import org.apache.spark.mllib.util.MLUtils
 	import org.apache.spark.rdd.RDD
@@ -65,7 +66,7 @@ MLUtils.loadLibSVMFile 读取LIBSVM格式的寻列样本
 
 ### Local matrix
 
-MLlib支持稠密矩阵和稀疏矩阵。稠密矩阵将整个数据值保存在单独的一个列顺序的二维数组中， 稀疏矩阵则将数据按CSC格式存储在列顺序的非零数组中。 
+MLlib支持稠密矩阵和稀疏矩阵。稠密矩阵将整个数据值保存在单独的一个列顺序的二维数组中， 稀疏矩阵则将数据按CSC格式存储在列顺序的非零数组中。
 
 	import org.apache.spark.mllib.linalg.{Matrix, Matrices}
 
@@ -73,7 +74,7 @@ MLlib支持稠密矩阵和稀疏矩阵。稠密矩阵将整个数据值保存在
 	val dm: Matrix = Matrices.dense(3, 2, Array(1.0, 3.0, 5.0, 2.0, 4.0, 6.0))
 
 	// Create a sparse matrix ((9.0, 0.0), (0.0, 8.0), (0.0, 6.0))
-	val sm: Matrix = Matrices.sparse(3, 2, Array(0, 1, 3), Array(0, 2, 1), Array(9, 6, 8)) 
+	val sm: Matrix = Matrices.sparse(3, 2, Array(0, 1, 3), Array(0, 2, 1), Array(9, 6, 8))
 
 ### Distributed matrix
 
@@ -101,11 +102,11 @@ RowMatrix可以从RDD[Vector]实例创建， 然后我们就可以对列做统�
 	val m = mat.numRows()
 	val n = mat.numCols()
 
-	// QR decomposition 
+	// QR decomposition
 	val qrResult = mat.tallSkinnyQR(true)
 
 ##### IndexedRowMatrix
-	
+
 	import org.apache.spark.mllib.linalg.distributed.{IndexedRow, IndexedRowMatrix, RowMatrix}
 
 	val rows: RDD[IndexedRow] = ... // an RDD of indexed rows
@@ -138,7 +139,7 @@ coordinateMatrix是一个分布式矩阵，基于自己本身的RDD。 每一个
 
 ##### BlockMatrix
 
-BlockMatrix也是一个分布式矩阵，基于MatrixBlocks的RDD， 它的tuple为 ``` ((Int, Int), Matrix)```, (Int, Int)为block的索引， Matrix是``rowsPerBlock x colsPerBlock```个数的子矩阵。 
+BlockMatrix也是一个分布式矩阵，基于MatrixBlocks的RDD， 它的tuple为 ``` ((Int, Int), Matrix)```, (Int, Int)为block的索引， Matrix是``rowsPerBlock x colsPerBlock```个数的子矩阵。
 
 A BlockMatrix can be most easily created from an IndexedRowMatrix or CoordinateMatrix by calling toBlockMatrix. toBlockMatrix creates blocks of size 1024 x 1024 by default. Users may change the block size by supplying the values through toBlockMatrix(rowsPerBlock, colsPerBlock).
 

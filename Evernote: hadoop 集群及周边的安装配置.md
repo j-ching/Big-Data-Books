@@ -1,8 +1,7 @@
----
 title: hadoop 集群及周边的安装配置
-tags: ["HBase", "hadoop", "hive", "hue"]
+tags: HBase, hadoop, hive, hue
 notebook: 技术相关
----
+
 
 # 版本选择
 + flume-ng-1.6.0-cdh5.8.0.tar.gz

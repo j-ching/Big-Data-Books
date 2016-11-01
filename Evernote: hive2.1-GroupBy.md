@@ -1,8 +1,8 @@
----
 title: hive2.1-GroupBy
 notebook: 技术相关
-tags:hive
----
+tags: hive
+
+[TOC]
 
 # Group By Syntax
 
