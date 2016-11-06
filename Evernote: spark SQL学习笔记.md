@@ -90,6 +90,7 @@ SQL中的一些特定的变量可以通过```spark.sql.dialect```选项来设置
 	// 30   1
 
 ### Running SQL Queries Programmatically
+sqlContext 可以运行sql查询，将结果作为DataFrame返回
 
 	val sqlContext = ... // An existing SQLContext
 	val df = sqlContext.sql("SELECT * FROM table")
@@ -109,6 +110,8 @@ Datasets 与RDD很相似，但不同于Java Serialization与 kryo的序列化方
 	// DataFrames can be converted to a Dataset by providing a class. Mapping will be done by name.
 	val path = "examples/src/main/resources/people.json"
 	val people = sqlContext.read.json(path).as[Person]
+
+*** DataFrame通过指定一个类来转化为DataSet ***
 
 ### Interoperating with RDDs
 spark sql 支持俩种方式将RDD转为DataFrames。 第一种方式是使用反射根据object中包含的类型来推断schema。 这种方式适用于你已经清楚的知道schema的情况下， 代码更简洁，更有效。
@@ -377,18 +380,23 @@ spark1.6开始，默认的spark只会在给定路径下寻找分区字段。如�
 	+ spark.sql.hive.metastore.barrierPrefixes
 
 ### JDBC To Other Databases
+spark SQL 也可以通过jdbc从其他的数据源中读取数据， 通过```JdbcRDD```来对数据进行操作。 返回DataFrame的结果，可以很容易在SparkSQL中处理，并且可以很容易的与其他数据源进行join操作。 JDBC datasource 也可以很容易的用java或者python来实现。
 
-连接postgres
+使用JDBC 需要现在spark的classpath中放入数据库对应的jdbc driver， 如，连接postgresql数据库，需要执行如下命令：
 
-	SPARK_CLASSPATH=postgresql-9.3-1102-jdbc41.jar bin/spark-shell
+	SPARK_CLASSPATH=postgresql-9.3-1102-jdbc41.jar
+	bin/spark-shell
 
 参数
 
-	+ url
-	+ dbtable
-	+ driver
-	+ partitionColumn, lowerBound, upperBound, numPartitions
-	+ fetchSize
+| 参数名 |  意义     |
+|-------|-----------|
+|url				|   连接的jdbc url       |
+|dbtable				|      要读取的jdbc 数据表    |
+|driver				|        连接url时需要的jdbc driver名称  |
+|partitionColumn,lowerBound,upperBound,numPartitions				|   These options must all be specified if any of them is specified. They describe how to partition the table when reading in parallel from multiple workers. partitionColumn must be a numeric column from the table in question. Notice that lowerBound and upperBound are just used to decide the partition stride, not for filtering the rows in table. So all rows in the table will be partitioned and returned.       |
+|fetchSize				| 决定了每一轮查询返回的行数         |
+
 
 
 	val jdbcDF = sqlContext.read.format("jdbc").options(Map("url" -> "jdbc:postgresql:dbserver", "dbtable" -> "schema.tablename")).load()
