@@ -1,0 +1,15 @@
+title: hive2.1 相关内容
+notebook: 技术相关
+tags: hive
+
+[TOC]
+
+# Hive的基本使用及cli
+# Hive多种语法 join/ group by
+# 作业执行的mapreduce / tez
+# 算子 operators
+# UDF/UDAF/UDTF
+# LLAP(long live and process)
+# Hiveserver2
+# ACID 及存储过程的原理
+# 各种查询优化器

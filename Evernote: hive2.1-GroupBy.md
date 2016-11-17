@@ -10,7 +10,7 @@ tags: hive
 	groupByExpression: expression
 	groupByQuery: SELECT expression (, expression)* FROM src groupByClause?
 
-groupByExpression的列需要通过名称来指定，不能使用位置编号。但是从hive0.11.0开始，可以设置参数hive.groupby.orderby.position.alias=true 来使用位置标号(默认为false)
+groupByExpression的列需要通过名称来指定，不能使用位置编号。但是从hive0.11.0开始，可以设置参数 ```hive.groupby.orderby.position.alias=true``` 来使用位置标号(默认为false)
 
 ### Simple Examples
 
@@ -94,10 +94,38 @@ aggregations 和 select 的输出可以进一步被输入到表中或者hdfs文�
 
 ### Grouping Sets, Cubes, Rollups, and the GROUPING__ID Function
 
-# Enhanced Aggregation, Cube, Grouping and Rollup
+	从hive0.10.0开始，添加了Grouping sets, Cube, rollup操作，以及 Group_ID 方法
+
+##### Grouping sets clause
+Grouping 集合分区让我们可以在相同的数据集下，制定多个group by参数。grouping set分区在逻辑上可以表示为多个group by子句的union。
+表格1 展现了几种相同的描述方式 ***在grouping sets中，一个空的set()会被解释为整个聚合操作***
+
+| grouping sets | group by  |
+|---------------|-----------|
+| SELECT a, b, SUM(c) FROM tab1 GROUP BY a, b GROUPING SETS ( (a,b) ) |  SELECT a, b, SUM(c) FROM tab1 GROUP BY a, b |
+|SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b GROUPING SETS ( (a,b), a)| SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b UNION SELECT a, null, SUM( c ) FROM tab1 GROUP BY a|
+|SELECT a,b, SUM( c ) FROM tab1 GROUP BY a, b GROUPING SETS (a,b)|  SELECT a, null, SUM( c ) FROM tab1 GROUP BY a union SELECT null, b, SUM( c ) FROM tab1 GROUP BY b|
+|SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b GROUPING SETS ( (a, b), a, b, ( ) )| SELECT a, b, SUM( c ) FROM tab1 GROUP BY a, b union SELECT a, null, SUM( c ) FROM tab1 GROUP BY a, null union SELECT null, b, SUM( c ) FROM tab1 GROUP BY null, b union SELECT null, null, SUM( c ) FROM tab1|
 
 
 
 
 
-详细如下
+
+
+##### Cubes and Rollups
+WITH CUBE/ROLLUP 只能用于Group by环境下， Cube 用group by的列集创建了一个具有所有可能组合的子集合。一旦计算了维度集合的cube， 我们就能够获取这些维度的所有可能的聚合操作
+
+|         cube         |       group by       |
+|----------------------|----------------------|
+| GROUP BY a, b, c WITH CUBE | GROUP BY a, b, c GROUPING SETS ((a,b,c), (a, b), (b, c), (a, c), (a), (b), (c), ())
+
+
+|         rollup         |       group by       |
+|----------------------|----------------------|
+| GROUP BY a, b, c with ROLLUP | GROUP BY a, b, c GROUPING SETS ((a,b,c), (a, b), (a), ())
+
+###### ***hive.new.job.grouping.set.cardinality***
+grouping sets/rollup/cubes 都是导致一个mr的任务被加载，类如： ```select a, b, c, count(1) from T group by a, b, c with rollup;``` ， 每行数据都是生成四行 (a,b,c), (a,b,null), (a, null, null), (null,null,null), 当table T 容量很大的时候，在mr的过程中就会造成数据膨胀， map端的聚合将不能完成。
+
+这个参数决定了hive是否需要增加一个mr的job。如果group set的基础远大于这个值，则hive就会添加一个附加的mr在原始的数据上，用于削减数据量。
