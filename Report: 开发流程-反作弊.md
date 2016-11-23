@@ -10,27 +10,66 @@ tags: 机器学习,渠道反作弊
 ### 用户注册数据
 用户的注册信息, 是用户的基本信息，用于描述用户的静态特征(mysql的user表)
 
-![Alt text](/Users/junjie.cheng/.atom/evnd/tmp/clipboard_20161110_152121.png "Optional title")
-
 ### 底层服务数据
 底层服务数据，包括了用户在使用App过程中产生的访问底层数据接口的信息(hive的user_action表)
-
-![Alt text](/Users/junjie.cheng/.atom/evnd/tmp/clipboard_20161110_152611.png "Optional title")
 
 ## 数据预处理
 通过将用户注册数据和底层服务数据的整理，抽取出一个月的新增用户的关键特征， 作为我们的样本集
 
-![Alt text](/Users/junjie.cheng/.atom/evnd/tmp/clipboard_20161110_153457.png "Optional title")
+|  序号  |  字段             |  类型          |    字段描述   |
+|-------|-------------------|---------------|--------------|
+|0	    |u_diu				|string			|设备唯一号,android--imei,ios--IDFV              |
+|1	    |is_reg				|int			|激活后是否注册：0未注册，1注册              |
+|2	    |avatar				|int			|激活后是否设置头像：0否，1是              |
+|3	    |type				|int			|激活后登录账号类型：1微信，2qq，3手机，0未注册              |
+|4	    |signature			|int			|激活后是否设置个性签名：0否，1是              |
+|5	    |space_pic			|int			|激活后是否设置背景空间：0否，1是              |
+|6	    |follow_ucnt		|int			|激活后关注用户的个数              |
+|7	    |manufacture		|string			|激活时的厂商              |
+|8	    |device				|string			|激活时的ios:设备型号              |
+|9	    |os_version			|string			|操作系统版本号              |
+|10     |dic_f				|string			|激活时的客户端渠道代码              |
+|11     |div_f				|string			|激活时的客户端版本              |
+|12     |hour_f				|int			|激活的时间——小时              |
+|13     |resolution			|string			|屏幕分辨率：高*宽              |
+|14     |u_client			|string			|客户端类型              |
+|15     |u_nettype			|string			|网络类型              |
+|16     |u_province			|string			|用户省份              |
+|17     |u_city				|string			|用户城市              |
+|18     |u_netop			|string			|网络运营商              |
+|19     |u_agent			|string			|客户端agent              |
+|20     |u_xff				|string			|客户端ip              |
+|21     |search_cnt			|int			|搜索次数              |
+|22     |sug_cnt			|int			|搜索提示次数              |
+|23     |homepage_cnt		|int			|首页打开次数              |
+|24     |hp_hot_cnt			|int			|首页-热门打开次数              |
+|25     |hp_dancemusic_cnt	|int			|首页-舞曲打开次数              |
+|26     |hp_talent_cnt		|int			|首页-达人打开次数              |
+|27     |hp_category_cnt	|int			|首页-分类打开次数              |
+|28     |hp_new_cnt			|int			|首页-最新打开次数              |
+|29     |hp_follow_cnt		|int			|首页-我的关注模块点击次数              |
+|30     |hp_greatest_cnt	|int			|首页-每日精选模块点击次数              |
+|31     |hp_live_cnt		|int			|首页-糖豆生活模块点击次数              |
+|32     |hp_stage_cnt		|int			|首页-糖粉舞台模块点击次数              |
+|33     |hp_more_cnt		|int			|首页-加载更多点击次数              |
+|34     |feaddback_cnt		|int			|糖小豆反馈次数              |
+|35     |showdance_cnt		|int			|秀舞打开次数              |
+|36     |upload_cnt			|int			|上传视频次数              |
+|37     |serv_cnt			|int			|接口调用次数              |
+|38     |serv_unique_cnt	|int			|接口调用个数              |
+|39     |vcnt				|int			|观看视频的个数              |
+|40     |vv					|int			|观看次数              |
+|41     |vp					|int			|播放进度              |
+|42     |vst				|int			|观看时长              |
+|43     |vc					|int			|评论次数              |
+|44     |vsf				|int			|送花次数              |
+|45     |vf					|int			|收藏次数              |
+|46     |vs					|int			|分享次数              |
+|47     |vd					|int			|下载次数              |
+|48     |max_stepid			|int			|激活当日最大步数              |
+|49     |agent_abnormal		|int			|user agent 是否异常，1是0否              |
+|50     |tag				|int			|0:负样本 1:正样本               |
 
-### 抽样
-抽取渠道 "gf", "yingyongbao", "alading" , "xiaomi", "360", "A004" 的数据作为训练和检验的样本
-+ 将 "gf", "yingyongbao", "alading" 三个渠道的数据作为正样本， 为正样本标注label值为1.0
-+ 将 "xiaomi", "360", "A004" 三个渠道的数据作为负样本， 为负样本标注label为0.0
-
-|  样本类型  |   数据源  |   labels |  features |
-|-----------|----------|----------|-----------|
-|  正样本   | 渠道为"gf", "yingyongbao", "alading" | 1.0 | Vector |
-|  负样本   | 渠道为"xiaomi", "360", "A004" | 0.0 | Vector |
 
 ### 样本标量化
 在模型训练时，要求将所有的类别性特征转为数据值特征。spark提供了多种用于特征转换的模型，这里我们使用```StringIndexer```模型， 他会将类别行的特征转为从```0```开始的数值型特征， 对应关系由类别出现的频率来决定， 如出现频率最多的值会转为```0```, 出现频率第二的值会转为```1```, 以此类推
