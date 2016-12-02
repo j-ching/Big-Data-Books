@@ -135,3 +135,42 @@ druid目录中自带了一个配置文件 ``conf-quickstart/tranquility/server.j
 * value_sum (derived from `value` in the input)
 * value_min (derived from `value` in the input)
 * value_max (derived from `value` in the input)
+
+我们采用了一个脚本，来随机生成度量数据，导入到这个datasource中
+
+    bin/generate-example-metrics | curl -XPOST -H'Content-Type: application/json' --data-binary @- [http://localhost:8200/v1/post/metrics](http://localhost:8200/v1/post/metrics)
+
+执行完成后会返回
+ 
+    {"result":{"received":25,"sent":25}}
+
+这表明http server 从你这里接收到了25条数据，并发送了这25条数据到druid。 在你第一次运行的时候，这个过程需要花一些时间，一段数据加载成功后，就可以查询了
+
+接下来就是数据查询了，我们可以采用如下几种方式来查询数据
+
+## Direct Druid queries 直接通过druid查询
+
+druid提供了基于json的富文本查询方式。在提供的示例中，``quickstart/wikiticker-top-pages.json`` 是一个topN的查询实例
+
+    curl -L -H'Content-Type: application/json' -XPOST --data-binary @quickstart/wikiticker-top-pages.json [http://localhost:8082/druid/v2/?pretty](http://localhost:8082/druid/v2/?pretty)
+
+## **Visualizing data 数据可视化**
+
+druid是面向用户分析应用的完美方案， 有很多开源的应用支持druid的数据可视化， 如pivot, caravel 和 metabase等
+
+## **SQL and other query libraries 查询组件**
+
+有许多查询组件供我们使用，如sql引擎， 还有其他各种语言提供的组件，如python和ruby。 具体如下：
+
++ python： [druid-io/pydruid](https://github.com/druid-io/pydruid)
++ R: [druid-io/RDruid](https://github.com/druid-io/RDruid)
++ JavaScript: [implydata/plywood](https://github.com/implydata/plywood)
++ [7eggs/node-druid-query](https://github.com/7eggs/node-druid-query)
++ Clojure: [y42/clj-druid](https://github.com/y42/clj-druid)
++ Ruby: [ruby-druid/ruby-druid](https://github.com/ruby-druid/ruby-druid)
++ [redBorder/druid_config](https://github.com/redBorder/druid_config)
++ SQL: [Apache Calcite](http://calcite.apache.org/)
++ [implydata/plyql](https://github.com/implydata/plyql)
++ PHP: [pixelfederation/druid-php](https://github.com/pixelfederation/druid-php)
+
+
