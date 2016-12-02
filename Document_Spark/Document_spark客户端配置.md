@@ -2,7 +2,7 @@ title: spark 笔记
 notebook: 技术相关
 tags: spark
 
-\[TOC\]
+[TOC]
 
 ## maven依赖
 
