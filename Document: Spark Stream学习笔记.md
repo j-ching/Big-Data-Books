@@ -4,7 +4,17 @@ tags: spark
 
 [TOC]
 
+# Overview
 
-## StreamContext
+Spark Streaming 是spark 核心API的一个扩展，是一个可扩展，高吞吐，高容错的实时数据流处理框架。 数据来源可以有多种，包括Kafka，Flume，ZeroMQ， Kinesis或者TCP sockets， 数据经过一系列的复杂的算法处理后(如map，reduce，join或者window)，将结果数据写入到文件系统，数据库或者实时的dashboards上。 事实上，spark的machine learning和graph processing 算法都可以运行在data stream上。
 
-## DStream
+![spark streaming 架构](http://spark.apache.org/docs/1.6.0/img/streaming-arch.png)
+
+SparkStream接收到输入的数据流之后， 将数据流分割为多个batch， 交给Spark引擎来技术，最后按batch 生成流式的结果集
+
+![spark Streaming 内部流结构](http://spark.apache.org/docs/1.6.0/img/streaming-flow.png)
+
+Spark Streaming 提供了一个抽象的概念，叫做discretized stream 或者DStream， 相当于连续的数据流。 Dstream 可以从Kafka， flume以及Kinesis等数据源来创建，也可以通过其他Dstream 经过一系列的操作获取。 DStream可以被理解为一系列的RDD
+
+# Example
+从TCP socket 获取文本数据，并计算每个单词出现的次数
