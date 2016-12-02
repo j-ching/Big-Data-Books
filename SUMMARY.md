@@ -1,5 +1,2 @@
 # Summary
-
-* [前言](QIAN_YAN.md)
-
-
+* [前言](README.md)
