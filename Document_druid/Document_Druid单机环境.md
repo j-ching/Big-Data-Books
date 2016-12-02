@@ -111,3 +111,7 @@ Druid是通过post请求的方式提交任务的， 上面我们也讲过，over
 可以在overload控制台 ``<http://localhost:8090/console.html>``来查看任务的运行情况， 当状态为“SUCCESS”时， 说明任务执行成功。
 
 当数据注入成功后，historical node会加载这些已经注入到集群的数据，方便查询，这大概需要花费1-2分钟的时间。 你可以在coordinator 控制台``<http://localhost:8081/#/>``来查看数据的加载进度
+
+当名为wikiticker的datasource 有个蓝色的小圈，并显示fully available时，说明数据已经可以了。可以执行查询操作了。
+
+# 加载流数据
