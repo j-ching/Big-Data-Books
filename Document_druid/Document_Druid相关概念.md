@@ -99,3 +99,14 @@ druid集群是由很多功能不同的节点组成的。
 **Real-time Processing：实时数据处理可以在单点实时节点或者索引服务(indexing service)完成， 实时的逻辑在这二者上是很常见的。实时处理主要包括加载数据，创建索引(创建segment)， 以及将segment迁移到historical nodes。经过实时处理后的数据及可查询。迁移处理也是无损的， 迁移后数据仍然是可以查询的。**
 
 **overload Nodes： **
+
+
+External Dependencies
+
+druid集群需要依赖：
+
+**Zookeeper 用于集群内部通讯**
+
+**Metadata Storage** 用户存储segment，configuration 等的metadata信息； 服务创建segments后，会向metadatastore中写一个新的标记， coordinatenode监控metadatastore来获取有哪些新的数据需要被重新load，或者有哪些旧的数据需要被去除。查询的时候并不需 要metadatastor的数据。 在生产集群中，mysql 和postgresql是比较常用的metadatastor， derby可以用于单机测试环境
+
+**Deep Storage** deepstorage作为segments一种持久的备份。 服务创建segments后，上传到deepstore。 coordinatenode从deepstorage下载segments。查询的时候也不会用到deepstorage。 常用的deepstorage有S3和hdfs。
