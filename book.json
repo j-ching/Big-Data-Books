@@ -1,6 +1,7 @@
 {
     "title": "GoingIO-DOCS",
     "author": "刈刀",
+    "description": "学习文档",
     "language": "zh",
     "plugins": [ 
         "github" 
