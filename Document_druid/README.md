@@ -24,4 +24,17 @@ druid拥有丰富的社区，供大家学习。
 
 Druid is an open-source analytics data store designed for business intelligence ([OLAP](http://en.wikipedia.org/wiki/Online_analytical_processing)) queries on event data. Druid provides low latency (real-time) data ingestion, flexible data exploration, and fast data aggregation. Existing Druid deployments have scaled to trillions of events and petabytes of data. Druid is most commonly used to power user-facing analytic applications.
 
+## Key Features
+
+**Sub-second OLAP Queries** Druid’s column orientation and inverted indexes enable complex multi-dimensional filtering and scanning exactly what is needed for a query. Aggregate and filter on data in milliseconds.
+
+**Real-time Streaming Ingestion** Typical analytics databases ingest data via batches. Ingesting an event at a time is often accompanied with transactional locks and other overhead that slows down the ingestion rate. Druid employs lock-free ingestion of append-heavy data sets to allow for simultaneous ingestion and querying of 10,000+ events per second per node. Simply put, the latency between when an event happens and when it is visible is limited only by how quickly the event can be delivered to Druid.
+
+**Power Analytic Applications** Druid has numerous features built in for multi-tenancy. Power user-facing analytic applications designed to be used by thousands of concurrent users.
+
+**Cost Effective** Druid is extremely cost effective at scale and has numerous features built in for cost reduction. Trade off cost and performance with simple configuration knobs.
+
+**Highly Available** Druid is used to back SaaS implementations that need to be up all the time. Druid supports rolling updates so your data is still available and queryable during software updates. Scale up or down without data loss.
+
+**Scalable** Existing Druid deployments handle trillions of events, petabytes of data, and thousands of queries every second.
   
