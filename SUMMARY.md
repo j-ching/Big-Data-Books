@@ -1,4 +1,3 @@
 # Summary
 
-* [Spark 入门](Do'cu'men't.md)
-
+* [Spark 入门](README.md)
