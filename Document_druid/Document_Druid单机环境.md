@@ -93,3 +93,21 @@ druid服务进程启动后，可以在控制台看到相应的日志信息。
 * deleted
 * delta
 * user_unique
+
+确定了度量，维度之后，接下来我们就可以导入数据了。首先，我们需要向druid提交一个注入数据的任务，并将目录指向我们需要加载的数据文件wikiticker-2015-09-12-sampled.json
+
+Druid是通过post请求的方式提交任务的， 上面我们也讲过，overload node 用于数据的加载，所以需要在overload节点上执行post请求， 目前单机环境，无需考虑这个。
+
+在druid根目录下执行
+
+    curl -X 'POST' -H 'Content-Type:application/json' -d @quickstart/wikiticker-index.json localhost:8090/druid/indexer/v1/task
+
+其中``wikiticker-index.json`` 文件指明了数据文件的位置，类型，数据的schema(如度量，维度，时间，在druid中的数据源名称等)等信息， 之后我也会详细的介绍，大家也可以从官网上查
+
+当控制台打印如下信息后，说明任务提交成功
+
+    {"task":"index_hadoop_wikipedia_2013-10-09T21:30:32.802Z"}
+
+可以在overload控制台 ``<http://localhost:8090/console.html>``来查看任务的运行情况， 当状态为“SUCCESS”时， 说明任务执行成功。
+
+当数据注入成功后，historical node会加载这些已经注入到集群的数据，方便查询，这大概需要花费1-2分钟的时间。 你可以在coordinator 控制台``<http://localhost:8081/#/>``来查看数据的加载进度
