@@ -19,3 +19,9 @@ druid既可以运行在商业的硬件上，也可以运行在云上。它可以
 五.丰富的社区
 
 druid拥有丰富的社区，供大家学习。
+
+** 关于Druid**
+
+Druid is an open-source analytics data store designed for business intelligence ([OLAP](http://en.wikipedia.org/wiki/Online_analytical_processing)) queries on event data. Druid provides low latency (real-time) data ingestion, flexible data exploration, and fast data aggregation. Existing Druid deployments have scaled to trillions of events and petabytes of data. Druid is most commonly used to power user-facing analytic applications.
+
+  
