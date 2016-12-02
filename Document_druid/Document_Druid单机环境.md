@@ -115,3 +115,23 @@ Druid是通过post请求的方式提交任务的， 上面我们也讲过，over
 当名为wikiticker的datasource 有个蓝色的小圈，并显示fully available时，说明数据已经可以了。可以执行查询操作了。
 
 # 加载流数据
+为了实现流数据的加载，我们可以通过一个简单http api来向druid推送数据，而tranquility就是一个不错的数据生产组件
+
+下载并安装tranquility
+
+    curl -O [http://static.druid.io/tranquility/releases/tranquility-distribution-0.8.0.tgz](http://static.druid.io/tranquility/releases/tranquility-distribution-0.8.0.tgz)
+    tar -xzf tranquility-distribution-0.8.0.tgz
+    cd tranquility-distribution-0.8.0
+
+druid目录中自带了一个配置文件 ``conf-quickstart/tranquility/server.json`` 启动tranquility服务进程， 就可以向druid的 metrics datasource 推送实时数据。
+
+    bin/tranquility server -configFile <path_to_druid_distro>/conf-quickstart/tranquility/server.json
+
+这一部分向大家介绍了如何通过tranquility服务来加载流数据， 其实druid还可以支持多种广泛使用的流式框架， 包括Kafka, Storm, Samza, and Spark Streaming等
+
+流数据加载中，维度是可变的，所以在schema定义的时候无需特别指明维度，而是将数据中任何一个字段都当做维度。而该datasource的度量则包含
+
+* count
+* value_sum (derived from `value` in the input)
+* value_min (derived from `value` in the input)
+* value_max (derived from `value` in the input)
