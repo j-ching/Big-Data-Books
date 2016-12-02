@@ -17,4 +17,5 @@ SparkStream接收到输入的数据流之后， 将数据流分割为多个batch
 Spark Streaming 提供了一个抽象的概念，叫做discretized stream 或者DStream， 相当于连续的数据流。 Dstream 可以从Kafka， flume以及Kinesis等数据源来创建，也可以通过其他Dstream 经过一系列的操作获取。 DStream可以被理解为一系列的RDD
 
 # Example
+
 从TCP socket 获取文本数据，并计算每个单词出现的次数
