@@ -8,6 +8,9 @@
             "blog": "http://www.goingio.com"
         }
     },
+    "styles": {
+    
+    },
     "plugins": [ 
         "github" 
     ],
