@@ -3,6 +3,11 @@
     "author": "刈刀",
     "description": "学习文档",
     "language": "zh",
+    "links": {
+        "sidebar" : {
+            "blog": "http://www.goingio.com"
+        }
+    },
     "plugins": [ 
         "github" 
     ],
