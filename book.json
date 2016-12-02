@@ -14,7 +14,8 @@
     "plugins": [ 
         "github",
         "advanced-emoji",
-        "splitter"
+        "splitter",
+        "toggle-chapters"
     ],
     "pluginsConfig": {
         "github": {
