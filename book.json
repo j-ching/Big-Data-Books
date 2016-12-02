@@ -13,7 +13,8 @@
     },
     "plugins": [ 
         "github",
-        "advanced-emoji"
+        "advanced-emoji",
+        "splitter"
     ],
     "pluginsConfig": {
         "github": {
