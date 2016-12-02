@@ -19,6 +19,15 @@ Spark Streaming 提供了一个抽象的概念，叫做discretized stream 或者
 #A Quick Example
 首先我们来看一下，一个简单的spark streaming程序是什么样子的。 举个例子，我们想统计一下，从TCP端口过来的文本数据，每个单词出现的字数。 我们创建一个本地的StsreamingContext，拥有俩个线程， 设置每1s发送一批
 
+    import org.apache.spark._
+    import org.apache.spark.streaming._
+    import org.apache.spark.streaming.StreamingContext._
+
+    val conf = new SparkConf().setMaster("local[2]").setAppName("NetworkWordCout")
+    val ssc = new StreamingContext(conf, Seconds(1))
+
+使用这个context， 我们可以从一个指定hostname和port的tcp数据源中读取DStream
+
 
 
 
