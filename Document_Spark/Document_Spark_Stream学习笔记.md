@@ -34,8 +34,18 @@ lines是Dstream， 表示从数据服务器接收到的数据流。Dstream中的
 
     val words = lines.flatMap(_.split(" "))
 
+flatMap是一个一边多Dstream的操作， 将源Dstream的每一条数据转为多条新的记录。 在此处，每一条记录都被分隔为多个单词，单词流被表示为单词Dstream。 然后我们就去数这些单词。
 
+    import org.apache.spark.streaming.StreamingContext._
+    
+    val pairs = words.map(word => (word, 1))
+    val wordCounts = pairs.reduceByKey(_ + _)
 
+    wordCounts.print()
+    
+words Dstream 进一步映射成为一个由(word，1)键值对组成的Dstream， 然后通过reduce获取每一批中单词的的平率， 最后，通过workCounts.print() 每一秒打印一次结果。
+
+当这些代码被执行的
 
 
 
