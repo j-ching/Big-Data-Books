@@ -45,7 +45,24 @@ flatMap是一个一边多Dstream的操作， 将源Dstream的每一条数据转�
     
 words Dstream 进一步映射成为一个由(word，1)键值对组成的Dstream， 然后通过reduce获取每一批中单词的的平率， 最后，通过workCounts.print() 每一秒打印一次结果。
 
-当这些代码被执行的
+当这些代码被执行后， Spark Streaming 只是对计算做了准备，真正的处理过程还没有开始， 当所有的转换完成之后， 计算过程才会开始，我们最后调用
+
+    ssc.start()
+    ssc.awaitTermination()
+
+该段代码可以在Spark Streaming Example的NetworkWordCount找到
+如果你已经下载并编译了spark， 可以按如下的步骤去执行。
+首先你需要运行一个netcat(unix系统中一个小的组件)， 
+
+    $ nc -lk 9999
+
+然后在另一个终端，执行example代码
+
+    $ ./bin/run-example streaming.NetworkWordCount localhost 9999
+
+然后，在netcat终端输入的任何字符， 都会被记录被打印出来
+
+
 
 
 
