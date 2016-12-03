@@ -28,6 +28,13 @@ Spark Streaming 提供了一个抽象的概念，叫做discretized stream 或者
 
 使用这个context， 我们可以从一个指定hostname和port的tcp数据源中读取DStream
 
+    val lines = ssc.socketTextStream("localhost", 9999)
+
+lines是Dstream， 表示从数据服务器接收到的数据流。Dstream中的每一条记录都都是一条文本，然后我们把这些记录通过空格分隔为单词
+
+    val words = lines.flatMap(_.split(" "))
+
+
 
 
 
