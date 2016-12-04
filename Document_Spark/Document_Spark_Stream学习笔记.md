@@ -64,6 +64,9 @@ words Dstream 进一步映射成为一个由(word，1)键值对组成的Dstream�
 
 # Basic Concepts
 
+## 相关连接
+与spark相同，spark streaming同样可以使用Maven Central 来管理。 开发自己的spark Streaming 程序时，需要将如下的依赖添加到你的sbt或者maven工程中
+
 
 
 
