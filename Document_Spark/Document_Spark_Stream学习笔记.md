@@ -111,7 +111,10 @@ StreamingContext也可以从一个SparkContext来创建
 当context被创建后，你就可以做如下的操作：
 
 1. 创建input Dstreams来定义数据源
-2. 
+2. 通过提交对DStreams的转化和输出操作来定义流式计算
+3. 使用streamingContext.start() 来启动数据的接收和处理工作
+4. 使用streamingContext.awaitTermination()等待处理工作的结束
+
 
 
 
