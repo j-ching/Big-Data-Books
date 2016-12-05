@@ -101,6 +101,15 @@ StreamingContext 可以通过sparkconf实例来创建
 
 batch的时间间隔需要基于你应用所需要的频率以及集群的资源来设定，查看[Performance Tuning](http://spark.apache.org/docs/1.6.0/streaming-programming-guide.html#setting-the-right-batch-interval)查看更多细节
 
+StreamingContext也可以从一个SparkContext来创建
+
+    import org.apache.spark.streaming._
+    
+    val sc = 
+    val ssc = new StreamingContext(sc, Seconds(1))
+
+当context被创建后，你就可以做如下的操作：
+1. 
 
 
 
