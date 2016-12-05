@@ -109,7 +109,9 @@ StreamingContext也可以从一个SparkContext来创建
     val ssc = new StreamingContext(sc, Seconds(1))
 
 当context被创建后，你就可以做如下的操作：
-1. 
+
+1. 创建input Dstreams来定义数据源
+2. 
 
 
 
