@@ -114,7 +114,7 @@ StreamingContext也可以从一个SparkContext来创建
 2. 通过提交对DStreams的转化和输出操作来定义流式计算
 3. 使用streamingContext.start() 来启动数据的接收和处理工作
 4. 使用streamingContext.awaitTermination()等待处理工作的结束
-5. 
+5. 也可以通过streamingContext.stop()来手动停止处理工作
 
 
 
