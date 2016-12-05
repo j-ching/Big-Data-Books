@@ -116,7 +116,12 @@ StreamingContext也可以从一个SparkContext来创建
 4. 使用``streamingContext.awaitTermination()``等待处理工作的结束
 5. 也可以通过``streamingContext.stop()`` 来手动停止处理工作
 
-
+关键点：
++ 一旦context被启动，新的流计算操作就无法被设置或者添加
++ 一旦context被停止， 就无法重新启动
++ 一个jvm钟，同一时间只能由一个streamingContext运行
++ streamingContext的stop()操作同时也关闭了SparkContext。如果只需关闭SparkContext， stop有个参数叫做``stopSparkContext``, 设置为``false``
++ 
 
 
 
