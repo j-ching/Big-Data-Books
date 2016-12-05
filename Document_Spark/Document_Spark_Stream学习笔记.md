@@ -91,8 +91,15 @@ MQTT   | spark-streaming-mqtt_2.10
  
 StreamingContext 可以通过sparkconf实例来创建
 
+    import org.apache.spark._
+    import org.apache.spark.streaming._
 
+    val conf = new SparkConf().setAppName(appName).setMaster(master)
+    val ssc = new StreamingContext(conf, Second(1))
 
+参数appName是你在cluster UI展现的名字. master 是一个Spark、Mesos 或者Yarn 集群的url，或者是在本地模式下的一个特殊的"local[*]". 事实上，在集群上运行程序的时候，并不需要硬编码master在程序里，而可以通过``spark-submit``来接收他。同时可以通过``ssc.sparkContext``来获取SparkContext对象
+
+batch的时间间隔需要基于你应用所需要的频率以及集群的资源来设定，查看[Performance Tuning]查看更多细节
 
 
 
