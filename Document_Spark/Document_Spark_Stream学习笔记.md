@@ -89,6 +89,8 @@ MQTT   | spark-streaming-mqtt_2.10
 
 初始化Spark Streaming程序的时候，streamingContext 需要被创建，以此作为所有SparkStreaming的入口
  
+StreamingContext 可以通过sparkconf实例来创建
+
 
 
 
