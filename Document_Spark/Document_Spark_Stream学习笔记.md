@@ -67,8 +67,22 @@ words Dstream 进一步映射成为一个由(word，1)键值对组成的Dstream�
 ## 相关连接
 与spark相同，spark streaming同样可以使用Maven Central 来管理。 开发自己的spark Streaming 程序时，需要将如下的依赖添加到你的sbt或者maven工程中
 
+    <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-streaming_2.10</artifactId>
+        <version>1.6.0</version>
+    </dependency>
 
+在spark Streaming的核心API中，并没有包括像kafka，flume，和kinesis等数据源的依赖，我们需要额外的添加相关的依赖，类似于 spark-streaming-xyz_2.10 等
 
+Source |   Artifact
+-------|-----------
+Kafka  | spark-streaming-kafka_2.10
+Flume  | spark-streaming-flume_2.10
+Kinesis| spark-streaming-kinesis-asl_2.10[Amazon Software License]
+Twitter| spark-streaming-twitter_2.10
+ZeroMQ | spark-streaming-zeromq_2.10
+MQTT   | spark-streaming-mqtt_2.10
 
 
 
