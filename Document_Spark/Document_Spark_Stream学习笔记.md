@@ -121,7 +121,9 @@ StreamingContext也可以从一个SparkContext来创建
 + 一旦context被停止， 就无法重新启动
 + 一个jvm钟，同一时间只能由一个streamingContext运行
 + streamingContext的stop()操作同时也关闭了SparkContext。如果只需关闭SparkContext， stop有个参数叫做``stopSparkContext``, 设置为``false``
-+ 
++ SparkContext可以创建多个StreamingContext, 当前一个StreamingContext被stop(但是SparkContext 没有被stop)，下一个StreamingContext会被创建
+
+
 
 
 
