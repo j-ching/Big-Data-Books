@@ -188,3 +188,5 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
     public static void main(String[] args) {
         SpringApplication.run(MySpringConfiguration.class, args);
     }
+
+### 启动失败
