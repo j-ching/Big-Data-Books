@@ -77,20 +77,20 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
     package com.example.myproject;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+    import org.springframework.context.annotation.ComponentScan;
+    import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-public class Application {
+    @Configuration
+    @EnableAutoConfiguration
+    @ComponentScan
+    public class Application {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        public static void main(String[] args) {
+            SpringApplication.run(Application.class, args);
+        }
+
     }
-
-}
 
 
