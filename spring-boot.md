@@ -170,3 +170,8 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
 
     $ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
+也可以运行自带的debugger来调试程序
+
+    $ java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n \
+       -jar target/myproject-0.0.1-SNAPSHOT.jar
+
