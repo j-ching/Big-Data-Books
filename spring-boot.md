@@ -5,4 +5,4 @@ tags: spring, spring-boot
 [TOC]
 
 # Getting started
-
+Spring boot方便了用户创建一个独立的，基于spring的应用，你可以直接运行。 
