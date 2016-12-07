@@ -58,7 +58,20 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
 同时使用一个根目录，可以在申明``@CompanentScan``时不用去设置``basePackage``属性， t同时当主类在根目录的时候， 你也可以使用``@SpringBootApplication`` 注解。
 
-
+    com
+     +- example
+         +- myproject
+             +- Application.java
+             |
+             +- domain
+             |   +- Customer.java
+             |   +- CustomerRepository.java
+             |
+             +- service
+             |   +- CustomerService.java
+             |
+             +- web
+                 +- CustomerController.java
 
 
 
