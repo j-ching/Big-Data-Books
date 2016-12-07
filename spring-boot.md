@@ -127,3 +127,26 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
 你可以很容易的使用任何Sprping Framework的技术来定义你的bean，并注入。 通过``@ComponentScan`` 查找你的beans，然后通过``@Autowired``来注入
 
 如果你按照之前我们建议的那样，将应用的主类放在根目录下， 那你可以使用没有任何参数的``@ComponentScan``， 应用中所有的组件(``@Componenet``, ``@Service``,``@Repository``,``@Controller``等)都会被自动注册
+
+    package com.example.service;
+
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.stereotype.Service;
+
+    @Service
+    public class DatabaseAccountService implements AccountService {
+
+    private final RiskAssessor riskAssessor;
+
+    @Autowired
+    public DatabaseAccountService(RiskAssessor riskAssessor) {
+    this.riskAssessor = riskAssessor;
+    }
+
+    // ...
+
+    }
+
+
+
+
