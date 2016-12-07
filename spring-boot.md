@@ -185,4 +185,6 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
 
 ``SpringApplication`` 提供了一种方便的方式来构造一个Spring 的应用。 在大多数情况下，你可以执行静态方法``SpringApplication.run``来直接运行
 
-
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringConfiguration.class, args);
+    }
