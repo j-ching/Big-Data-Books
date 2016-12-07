@@ -148,8 +148,21 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
     }
 
 
-# 使用``@SpringBootApplication``注解
+# 使用@SpringBootApplication 注解
 spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfiguration``,``@ComponentScan``，而且使用非常频繁， 所以spring boot提供了``@SpringBootApplication``来取代
 
+    package com.example.myproject;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+    @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+    public class Application {
+
+        public static void main(String[] args) {
+            SpringApplication.run(Application.class, args);
+        }
+
+    }
 
 
