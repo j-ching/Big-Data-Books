@@ -196,5 +196,8 @@ SpringBoot提供了很多``FailureAnalyzer``的实现，我们也可以很方便
 
     org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer.
 
-### 自定义banner
+### 定制banner
 banner是指应用启动的时候所打印的信息。可以通过在classpath添加一个banner.txt文件或者设置``banner.localtion``来指向新的文件来修改内容。文件的编码可以通过``banner.charset``来设置，默认为``utf-8``. 除了文本文件，还可以添加banner.gif，banner.jpg或者 banner.png 到我们的classpath,或者设置参数``banner.imag.location``. 图片会被转为ASCII码来呈现
+
+### 定制SpringApplication
+
