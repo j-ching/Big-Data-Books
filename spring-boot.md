@@ -54,7 +54,7 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
 ## application类的位置
 
-应用主Class 建议放在package的根目录下， ``@EnableAutoConfiguration``一般放在主Class之上，同时也隐含着该目录为操作的基本目录， 比如你定义了一个JPA的应用， 则``@Entity`` 就会扫描``@@EnableAutoConfiguration``定义的package。
+应用主Class 建议放在package的根目录下， ``@EnableAutoConfiguration``一般放在主Class之上，同时也隐含着该目录为操作的基本目录， 比如你定义了一个JPA的应用， 则spring会在``@@EnableAutoConfiguration``定义的package中搜索``@Entity``申明的实例。
 
 
 
