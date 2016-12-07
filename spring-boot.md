@@ -190,3 +190,9 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
     }
 
 ### 启动失败
+当启动失败时，已经注册的``FailureAnalyzers``就会提示识别到的错误信息，并提供一个建议来修复问题。 
+SpringBoot提供了很多``FailureAnalyzer``的实现，我们也可以很方便的自己实现
+如果没有任何的错误被``Analyzer``捕获， 可以展现全部的自动配置信息来查看问题所在， 
+
+    org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer.
+
