@@ -98,5 +98,5 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以使用xml配置源来启动。建议你的主要配置源是一个``@Configuration`` 的类， 通常将主入口``main()``方法所在的类标记为主``@Configuration``类
 
 ## 引入附加的Configuration类
-你不需要将所有的``@Configuration``都放在一个单独的类中，``@Import``注解可以引入额外的配置类
+你不需要将所有的``@Configuration``都放在一个单独的类中，``@Import``注解可以引入额外的配置类。 同时你也可以使用``@ComponentScan``来自动的引入Spring的组件，包括``@Configuration``类
 
