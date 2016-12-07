@@ -148,5 +148,6 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
     }
 
 
+# 使用``@SpringBootApplication``注解
 
 
