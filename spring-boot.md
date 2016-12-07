@@ -95,5 +95,5 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
 # Configuration class
 
-spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以使用xml配置源来启动。建议你的主要配置源是一个``@Configuration`` 的类
+spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以使用xml配置源来启动。建议你的主要配置源是一个``@Configuration`` 的类， 通常将主入口``main()``方法所在的类标记为主``@Configuration``类
 
