@@ -179,3 +179,5 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
 
     mvn spring-boot:run
 
+# SpringBoot特征
+
