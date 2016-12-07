@@ -51,3 +51,9 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
 # 代码结构
 ** 建议使用自定义的package，默认的default 包会造成使用``@ComponentScan``, ``@EntityScan``, ``@SpringBootApplication``声明的application 出现问题，每个jar包中的每个class都会被读取**
+
+## application类的位置
+
+应用主Class 建议放在package的跟目录下， ``@EnableAutoConfiguration``一般放在主Class之上，同时也隐含着对于某些操作的基础
+
+
