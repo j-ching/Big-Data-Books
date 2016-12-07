@@ -114,6 +114,11 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
 在运行应用的时候，使用``--debug``,可以看到当前自动加载的所有配置信息。
 
 ## 让指定配置的自动加载失效
+可以使用``@EnableAutoConfiguration``的exclude属性来指定某些配置自动加载失效
 
+    @Configuration
+    @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+    public class MyConfiguration {
+    }
 
 
