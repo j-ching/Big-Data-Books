@@ -106,4 +106,5 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
 # Auto-Configuration
 Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置。 如``HSQLDB``在你的classpath中， 你不需要手动配置任何的数据库连接，springboot会自动的加载到内存中。
 
+你可以通过``@ENableAutoConfiguration``或者``@SpringBootApplication``注解``@Configuration``类来控制自动加载
 
