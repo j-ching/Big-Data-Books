@@ -103,3 +103,7 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
 ## 引入XML 配置
 如果你执意要使用xml的配置，那我们建议你使用一个``@Configuration``类，然后通过``@ImportResource``来加载xml的配置
 
+# Auto-Configuration
+Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置。 如``HSQLDB``在你的classpath中， 你不需要手动配置任何的数据库连接，springboot会自动的加载到内存中。
+
+
