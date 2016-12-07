@@ -124,4 +124,4 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
 如果类不在你的classpath中，可以使用``excludeName``属性指定全名。 同样你可以使用``spring.autoconfigure.exclude``来指定一个列表
 
 # Spring Bean 以及依赖注入
-
+你可以很容易的使用任何Sprping Framework的技术来定义你的bean，并注入。 
