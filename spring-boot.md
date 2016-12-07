@@ -108,3 +108,6 @@ Spring Boot自动配置功能，可以自动的加载依赖的jar包中的配置
 
 你可以通过``@ENableAutoConfiguration``或者``@SpringBootApplication``注解``@Configuration``类来控制自动加载
 
+## 逐步替换Auto-configuration
+自动加载配置功能是非侵害的，如果你需要定义自己的配置来取代自动配置就比较麻烦了。 比如你想添加自己的``DataSource``实例
+
