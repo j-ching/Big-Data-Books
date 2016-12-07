@@ -201,3 +201,11 @@ banner是指应用启动的时候所打印的信息。可以通过在classpath�
 
 ### 定制SpringApplication
 
+如果默认的SpringApplication不符合你的要求，你可以创建一个本地的实例，然后定制他。 类如，你如果想关掉bunner，则可以
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(MySpringConfiguration.class);
+        app.setBannerMode(Banner.Mode.OFF);
+        app.run(args);
+    }
+
