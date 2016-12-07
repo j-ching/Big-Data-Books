@@ -181,3 +181,6 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
 
 # SpringBoot特征
 
+## SpringApplication 
+
+``SpringApplication`` 提供了表里的方式
