@@ -166,4 +166,7 @@ spring boot 需要在主类上标记``@Configuration``, ``@EnableAutoConfigurati
     }
 
 # 运行应用
+### 运行一个打包的应用
+
+    $ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 
