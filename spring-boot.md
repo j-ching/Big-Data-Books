@@ -35,3 +35,15 @@ Spring boot方便了用户去创建一个独立的，基于spring的应用，你
 
 并不是所有的应用都需要继承直``spring-boot-starter-parent``, 如果你有自己的parent，你可以使用如下的Maven配置
 
+    <dependencyManagement>
+         <dependencies>
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>1.4.2.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+           </dependency>
+        </dependencies>
+    </dependencyManagement>
