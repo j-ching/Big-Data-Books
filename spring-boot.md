@@ -6,7 +6,7 @@ tags: spring, spring-boot
 
 Spring boot方便了用户去创建一个独立的，基于spring的应用，你可以直接运行。大多数的spring boot 应用不需要太多的配置。 
 
-## maven 设置
+# maven 设置
 
     <parent>
         <groupId>org.springframework.boot</groupId>
