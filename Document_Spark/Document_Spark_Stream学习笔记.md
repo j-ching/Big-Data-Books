@@ -126,12 +126,9 @@ StreamingContext也可以从一个SparkContext来创建
 # Discretized Streams(DStreams)
 Discretized Stream或者叫DStream 是spark Streaming的一个基本的概念，你可以把它看做是连续的数据流，无论是从数据源接收的数据，还是有输入流转化处理后的数据。具体的说，一个DStream表现为一系列的RDD，每个RDD包含着指定时间间隔的一系列数据
 
-
 ![Dstreams](http://spark.apache.org/docs/1.6.0/img/streaming-dstream.png)
 
-
-
-sdf
+任何基于Dstream的操作，都是转为对于RDD的操作。
 
 
 
