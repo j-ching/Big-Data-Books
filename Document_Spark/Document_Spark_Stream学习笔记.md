@@ -128,7 +128,7 @@ Discretized Stream或者叫DStream 是spark Streaming的一个基本的概念，
 
 ![Dstreams](http://spark.apache.org/docs/1.6.0/img/streaming-dstream.png)
 
-任何基于Dstream的操作，都是转为对于RDD的操作。
+任何基于Dstream的操作，都是转为对于RDD的操作。类如： 
 
 
 
