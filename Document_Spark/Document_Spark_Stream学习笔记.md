@@ -150,6 +150,11 @@ spark Streaming 提供了俩种类型构建输入流的方式
 ## 基础数据源
 前面的示例我们已经看到了通过``ssc.socketTextStream()``从TCP soket连接中接收数据，创建DStream。除此之外， StreamingContext Api也提供了从文件和akka  actor作为数据源创建DStream。
 
++ **File Streams** 利用HDFS API(HDFS,S3,NFS等) 从文件系统中读取文件数据， DStream 创建如下：
+
+
+    streamingContext.fileStream[KeyClass, valueClass, InputFormatClass](dataDirectory)
+
 
 
 
