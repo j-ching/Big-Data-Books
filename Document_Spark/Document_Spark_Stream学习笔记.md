@@ -147,6 +147,8 @@ spark Streaming 提供了俩种类型构建输入流的方式
 + 本地运行时，master url 不要使用 local 或者 local[1]. 因为这样意味着只有一个线程来运行任务。 如果你使用了一个包含receiver的Input DStream，单一的线程就会被占用来接收数据， 没有多余的线程来处理数据了。所以在本地执行时，设置master url 为 local[n], n需要比receivers的数量要多。
 + 在集群上运行时，分配给spark Streaming 应用的core数目需要比receivers要多，否则只能接收数据，没有线程处理数据
 
+## 基础数据源
+
 
 
 
