@@ -7,7 +7,7 @@
     * [Spark安装及配置](Document_Spark/Document_spark安装及配置.md)
     * [Spark客户端配置](Document_Spark/Document_spark客户端配置.md)
     * [Spark-SQL](Document_Spark/Document_spark_SQL学习笔记.md)
-    * [Spark-Streaming](Document_Spark/Document_Spark_Stream学习笔记.md)
+    * [Spark-Streaming](Document_Spark/Document_Spark_Streaming/README.md)
         * [Spark Streaming Custom Receivers](Document_Spark/spark-streaming-custom-receivers.md)
     * [Spark-MLlib](Document_Spark/Document_Spark_MLlib/README.md)
         * [基础统计](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-基础统计.md)
