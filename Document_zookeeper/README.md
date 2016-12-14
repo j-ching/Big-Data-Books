@@ -1,1 +1,1 @@
-# Zookeeper
+# Zookeeper: Because Coordinating Distributed Systems is a Zoo
