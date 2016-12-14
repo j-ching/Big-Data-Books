@@ -155,3 +155,6 @@ spark Streaming 提供了俩种类型构建输入流的方式
  + 文件必须是是通过移到目录下或者在该目录下重命名来创建
  + 一旦已经被转移到目录下， 文件就不能改变了， 如果文件持续append， 新的数据也不会被读取
 
+在上例中，``streamingContext.textFileStream(dataDirectory)`` 并不需要运行receiver, 因此不需要分配core
+
+
