@@ -148,6 +148,8 @@ spark Streaming 提供了俩种类型构建输入流的方式
 + 在集群上运行时，分配给spark Streaming 应用的core数目需要比receivers要多，否则只能接收数据，没有线程处理数据
 
 ## 基础数据源
+前面的示例我们已经看到了通过``ssc.socketTextStream()``从TCP soket连接中接收数据，创建DStream。除此之外， StreamingContext Api也提供了从文件和akka  actor作为数据源创建DStream。
+
 
 
 
