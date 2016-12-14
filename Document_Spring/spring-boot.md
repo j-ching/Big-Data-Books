@@ -100,6 +100,21 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
 ## 引入附加的Configuration类
 你不需要将所有的``@Configuration``都放在一个单独的类中，``@Import``注解可以引入额外的配置类。 同时你也可以使用``@ComponentScan``来自动的引入Spring的组件，包括``@Configuration``类
 
+1. 定义配置类
+
+    public class EncodingConfiguration {
+        private static final Logger logger = Logger.getLogger(EncodingConfiguration.class);
+
+        public CharacterEncodingFilter characterEncodingFilter() {
+            logger.info("re-set the character encoding filter");
+            CharacterEncodingFilter filter = new CharacterEncodingFilter();
+            filter.setEncoding("utf-8");
+            filter.setForceEncoding(true);
+            return filter;
+        }
+    }
+
+
 ## 引入XML 配置
 如果你执意要使用xml的配置，那我们建议你使用一个``@Configuration``类，然后通过``@ImportResource``来加载xml的配置
 
