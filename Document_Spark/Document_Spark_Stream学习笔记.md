@@ -141,7 +141,12 @@ spark Streaming 提供了俩种类型构建输入流的方式
 + **基础数据源**StreamingContext API可以直接使用的数据源，如 文件系统，socket连接 以及 akka actors
 + **高级数据源**需要使用扩展组件来访问的源， 如kafka, flume, kinesis，twitter等。
 
-如果在你的应用中需要并行接收多种数据源，则需要创建``multiple input DStreams``. 创建的multiple receivers会同时接收多种数据流。 
+如果在你的应用中需要并行接收多种数据源，则需要创建``multiple input DStreams``. 创建的multiple receivers会同时接收多种数据流。 要注意的是，spark的worker/executor是会一直运行的，它会在spark Streaming 应用分配的core中执行， 所以确保有足够多的core来接收数据，同时运行receivers是很重要的。
+
+有俩点：
++ 本地运行时，master url 不要使用 local 或者 local[1]. 因为这样意味着只有一个线程来运行任务。 如果你使用了一个包含receiver的Input DStream，单一的线程就会被占用来接收数据， 没有多余的线程来处理数据了。所以在本地执行时，设置master url 为 local[n], n需要比receivers的数量要多。
++ 在集群上运行时，分配给spark Streaming 应用的core数目需要比receivers要多，否则只能接收数据，没有线程处理数据
+
 
 
 
