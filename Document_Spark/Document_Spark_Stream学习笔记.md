@@ -137,7 +137,11 @@ RDD的转化由Spark引擎来来完成。DStream的操作隐藏了这些细节�
 # Input DStreams And Receivers
 InputDStream 表示从输入流数据接收过来的数据流。 在之前的例子中，从netcat server接收的行数据就是InputDStream。 每个InputDStream都与一个receiver Object相关(文件流除外，后面会专门介绍)， receiver Object接收数据源的数据，并保存在内存中，供后续处理
 
+spark Streaming 提供了俩种类型构建输入流的方式
++ **基础数据源**StreamingContext API可以直接使用的数据源，如 文件系统，socket连接 以及 akka actors
++ **高级数据源**需要使用扩展组件来访问的源， 如kafka, flume, kinesis，twitter等。
 
+如果在你的应用中需要并行接收多种数据源，则需要创建``multiple input DStreams``. 创建的multiple receivers会同时接收多种数据流。 
 
 
 
