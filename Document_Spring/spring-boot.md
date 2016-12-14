@@ -115,6 +115,7 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
         }
     }
     
+    
  2. 通过``@Import``导入到``@Configuration``类中
  
    
