@@ -135,6 +135,8 @@ Discretized Stream或者叫DStream 是spark Streaming的一个基本的概念，
 RDD的转化由Spark引擎来来完成。DStream的操作隐藏了这些细节，对外提供了用于交互的高级API供开发者使用。
 
 # Input DStreams And Receivers
+InputDStream 表示从输入流数据接收过来的数据流。 在之前的例子中，从netcat server接收的行数据就是InputDStream。 每个InputDStream都与一个receiver Object相关(文件流除外，后面会专门介绍)， receiver Object接收数据源的数据，并保存在内存中，供后续处理
+
 
 
 
