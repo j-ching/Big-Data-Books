@@ -102,6 +102,7 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
 
 1. 定义配置类
 
+
     public class EncodingConfiguration {
         private static final Logger logger = Logger.getLogger(EncodingConfiguration.class);
 
