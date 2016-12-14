@@ -117,6 +117,17 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
     
  2. 通过``@Import``导入到``@Configuration``类中
  
+    @Configuration
+    @EnableAutoConfiguration
+    @ComponentScan
+    @ImportResource("classpath:recommend-servlet.xml")
+    @Import(EncodingConfiguration.class)
+    public class Application {
+        public static void main(String[] args) throws Exception {
+            SpringApplication app = new SpringApplication(Application.class);
+            app.run(args);
+        }
+    }
    
 
 
