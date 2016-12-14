@@ -100,7 +100,7 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
 ## 引入附加的Configuration类
 你不需要将所有的``@Configuration``都放在一个单独的类中，``@Import``注解可以引入额外的配置类。 同时你也可以使用``@ComponentScan``来自动的引入Spring的组件，包括``@Configuration``类
 
-1. 定义配置类
+1.定义配置类
 
 
     public class EncodingConfiguration {
@@ -115,7 +115,7 @@ spring boot 喜欢基于java的配置, 尽管``SpringApplication.run()``可以�
         }
     }
     
- 2. 通过``@Import``导入到``@Configuration``类中
+ 2.通过``@Import``导入到``@Configuration``类中
  
  
     @Configuration
