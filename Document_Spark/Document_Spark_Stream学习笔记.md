@@ -152,8 +152,8 @@ spark Streaming 提供了俩种类型构建输入流的方式
 
 + **File Streams** 利用HDFS API(HDFS,S3,NFS等) 从文件系统中读取文件数据， DStream 创建如下：
 
-
     streamingContext.fileStream[KeyClass, valueClass, InputFormatClass](dataDirectory)
+
 
 
 
