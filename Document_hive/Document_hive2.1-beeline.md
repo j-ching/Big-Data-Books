@@ -50,7 +50,7 @@ Beeline shell 可以运行在内嵌模式和远程模式俩种情况下。内嵌
 
 | 命令   |  描述 |
 |-------|-------|
-| ```!<SQLLine command> ```|  SQLLine Commands相关命令见[地址](http://sqlline.sourceforge.net/.)
+| !<SQLLine command> |  SQLLine Commands相关命令见[地址](http://sqlline.sourceforge.net/.)
 
 ### Beeline Commands
 
