@@ -87,7 +87,7 @@ eg:
 
 | 参数 | 描述 | Usage |
 |------|------|------|
-|`` -u <database url> `` |  用于连接的jdbc url.| beeline -u db_URL |
+|``-u <database url>`` |  用于连接的jdbc url.| beeline -u db_URL |
 |```-r```|  重新连接最后一次连接的jdbc url| beeline -r|
 |```-n <username>```|  beeline 连接时使用的用户名 |beeline -n valid_user|
 |```-p <password>```|  beeline 连接时使用的密码  | beeline -p valid_password|
