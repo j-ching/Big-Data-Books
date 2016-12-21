@@ -56,15 +56,15 @@ Beeline shell 可以运行在内嵌模式和远程模式俩种情况下。内嵌
 
 | 命令 |  描述 |
 |-----|-------|
-|``reset``|   重置相关配置到默认值 |
-|```set <key>=<value>```| 给指定的配置设置参数值， 如果变量拼写错误，beeline不会报错|
-|```set``` |  列出所有被用户覆盖的配置信息 |
-| ```set -v``` | 列出所有的hadoop和hive的配置信息|
-|```add FILE[S] <filepath> <filepath>*``` ```add JARS[S] <filepath> <filepath>* ``` ``` add ARCHIVE[S] <filepath> <filepath>* ``` | 向distributed cache 的资源列表中添加一个或者多个file，jars，或者archive|
-|```add FILE[s] <ivyurl> <ivyurls>*``` ``` add JARS[S] <ivyurl> <ivyurl>* ``` ```add ARCHIVE[S] <ivyurl> <ivyurl>*``` | 使用ivy url 想distributed cache的资源列表中添加一个或者多个file，jars或者archive
-| ```list FILE[S]``` ```list JAR[S]``` ```list ARCHIVE[S]```| 列出已经被添加到distributed cache中的资源列表|
-|```delete FILE[S] <filepath> <filepath>*``` ```delete JARS[S] <filepath> <filepath>* ``` ``` delete ARCHIVE[S] <filepath> <filepath>* ``` | 从distributed cache中删除资源
-|```delete FILE[s] <ivyurl> <ivyurls>*``` ``` delete JARS[S] <ivyurl> <ivyurl>* ``` ```delete ARCHIVE[S] <ivyurl> <ivyurl>*``` | 从distributed cache中删除资源
+|reset|   重置相关配置到默认值 |
+|set <key>=<value>| 给指定的配置设置参数值， 如果变量拼写错误，beeline不会报错|
+|set|  列出所有被用户覆盖的配置信息 |
+|set -v| 列出所有的hadoop和hive的配置信息|
+|add FILE[S] <filepath> <filepath>* ; add JARS[S] <filepath> <filepath>* ; add ARCHIVE[S] <filepath> <filepath>* ; | 向distributed cache 的资源列表中添加一个或者多个file，jars，或者archive|
+| add FILE[s] <ivyurl> <ivyurls>* ; add JARS[S] <ivyurl> <ivyurl>* ; add ARCHIVE[S] <ivyurl> <ivyurl>*; | 使用ivy url 想distributed cache的资源列表中添加一个或者多个file，jars或者archive
+| list FILE[S]; list JAR[S]; list ARCHIVE[S]| 列出已经被添加到distributed cache中的资源列表|
+|delete FILE[S] <filepath> <filepath>* ; delete JARS[S] <filepath> <filepath>* ; delete ARCHIVE[S] <filepath> <filepath>* | 从distributed cache中删除资源
+|delete FILE[s] <ivyurl> <ivyurls>*; delete JARS[S] <ivyurl> <ivyurl>* ; delete ARCHIVE[S] <ivyurl> <ivyurl>*| 从distributed cache中删除资源
 | ```reload``` | 通过配置```hive.reloadable.aux.jars.path ```参数来改变其值，可以增加，删除和更新jar 文件|
 | ```dfs <dfs command>``` |  执行dfs 命令 |
 | ``` <query string> ``` |  执行hive查询并返回结果|
