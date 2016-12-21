@@ -65,9 +65,9 @@ Beeline shell 可以运行在内嵌模式和远程模式俩种情况下。内嵌
 | list FILE[S]; list JAR[S]; list ARCHIVE[S]| 列出已经被添加到distributed cache中的资源列表|
 |delete FILE[S] <filepath> <filepath>* ; delete JARS[S] <filepath> <filepath>* ; delete ARCHIVE[S] <filepath> <filepath>* | 从distributed cache中删除资源
 |delete FILE[s] <ivyurl> <ivyurls>*; delete JARS[S] <ivyurl> <ivyurl>* ; delete ARCHIVE[S] <ivyurl> <ivyurl>*| 从distributed cache中删除资源
-| ```reload``` | 通过配置```hive.reloadable.aux.jars.path ```参数来改变其值，可以增加，删除和更新jar 文件|
-| ```dfs <dfs command>``` |  执行dfs 命令 |
-| ``` <query string> ``` |  执行hive查询并返回结果|
+| reload | 通过配置 hive.reloadable.aux.jars.path参数来改变其值，可以增加，删除和更新jar 文件|
+| dfs <dfs command>|  执行dfs 命令 |
+| <query string> |  执行hive查询并返回结果|
 
 
 eg:
