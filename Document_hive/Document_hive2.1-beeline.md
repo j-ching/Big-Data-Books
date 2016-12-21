@@ -96,29 +96,29 @@ eg:
 |-f <file>|需要执行的脚本文件 | beeline -f  filepath |
 |-i (or)  --init <file or files>| 初始化脚本 | beeline -i /tmp/initfile |
 |-w (or) --password-file <password file>| 读取密码的文件|        |
-|-a (or) --authType <auth type>```| 授权文件     |           |
-|--property-file <file>``` |  配置文件 | beeline --property-file /tmp/a|
-|--hiveconf property=value```| 设置特定的hive配置 | beeline --hiveconf prop1=value1|
-|--hivevar name=value```|  hive 变量名和值 | beeline --hivevar var1=value1 |
-|```--color=[true/false]```|用于控制是否显示颜色，默认为false| beeline --color=true |
-|```--showHeader=[true/false]```| 查询结果是否显示表头 | beeline --showHeader=false|
-|```--headerInterval=ROWS```| 表头重复展现 | beeline --headerInterval=50 |
-|```--fastConnect=[true/false]```|When connecting, skip building a list of all tables and columns for tab-completion of HiveQL statements (true) or build the list (false). Default is true.|beeline --fastConnect=false|
-|```--autoCommit=[true/false]```|自动提交事务| beeline --autoCommit=true|
-|```--verbose=[true/false]```|是否展现冗长的调试信息| beeline --verbose=true|
-|```--showWarnings=[true/false]```|是否展现警告信息| beeline --showWarnings=true|
-|```--showDbInPrompt=[true/false]```|是否显示当前的数据库| beeline --showDbInPrompt=true|
-|```--showNestedErrs=[true/false]```|是否展现嵌套的错误| beeline --showNestedErrs=true|
-|```--numberFormat=[pattern]```|格式化数据| beeline --numberFormat="#,###,##0.00"|
-|```--force=[true/false]```|在遇到错误时是否继续执行| beeline--force=true |
-|```--maxWidth=MAXWIDTH```| 控制台清理数据前的最大宽度| beeline --maxWidth=150|
-|```--maxColumnWidth=MAXCOLWIDTH```| 最大列数|  beeline --maxColumnWidth=25 |
-|```--silent=[true/false]```| 压缩展现的消息数量 | beeline --silent=true |
-|```--autosave=[true/false]```| 自动保存偏好设置 | beeline --autosave=true |
-|```--outputformat=[table/vertical/csv/tsv/dsv/csv2/tsv2]```| 结果展现的格式 | beeline --outputformat=tsv |
-|```--truncateTable=[true/false]```| 在控制台展现超出长度会清楚掉 |         |
-|```--delimiterForDSV= DELIMITER```| 分隔字符 |    |
-|```--isolation=LEVEL```|  事务的隔离级别 |  beeline --isolation=TRANSACTION_SERIALIZABLE |
-|```--nullemptystring=[true/false]```|  将pull转为字符串或者NULL           | beeline --nullemptystring=false |
-|```--incremental=[true/false]```|  结果是否被缓存 |             |
-|```--help```| 显示usage  信息 | beeline --help  |
+|-a (or) --authType <auth type>| 授权文件     |           |
+|--property-file <file>|  配置文件 | beeline --property-file /tmp/a|
+|--hiveconf property=value| 设置特定的hive配置 | beeline --hiveconf prop1=value1|
+|--hivevar name=value|  hive 变量名和值 | beeline --hivevar var1=value1 |
+|--color=[true/false]|用于控制是否显示颜色，默认为false| beeline --color=true |
+|--showHeader=[true/false]| 查询结果是否显示表头 | beeline --showHeader=false|
+|--headerInterval=ROWS| 表头重复展现 | beeline --headerInterval=50 |
+|--fastConnect=[true/false]|When connecting, skip building a list of all tables and columns for tab-completion of HiveQL statements (true) or build the list (false). Default is true.|beeline --fastConnect=false|
+|--autoCommit=[true/false]|自动提交事务| beeline --autoCommit=true|
+|--verbose=[true/false]|是否展现冗长的调试信息| beeline --verbose=true|
+|--showWarnings=[true/false]|是否展现警告信息| beeline --showWarnings=true|
+|--showDbInPrompt=[true/false]|是否显示当前的数据库| beeline --showDbInPrompt=true|
+|--showNestedErrs=[true/false]|是否展现嵌套的错误| beeline --showNestedErrs=true|
+|--numberFormat=[pattern]|格式化数据| beeline --numberFormat="#,###,##0.00"|
+|--force=[true/false]|在遇到错误时是否继续执行| beeline--force=true |
+|--maxWidth=MAXWIDTH| 控制台清理数据前的最大宽度| beeline --maxWidth=150|
+|--maxColumnWidth=MAXCOLWIDTH| 最大列数|  beeline --maxColumnWidth=25 |
+|--silent=[true/false]| 压缩展现的消息数量 | beeline --silent=true |
+|--autosave=[true/false]| 自动保存偏好设置 | beeline --autosave=true |
+|--outputformat=[table/vertical/csv/tsv/dsv/csv2/tsv2]```| 结果展现的格式 | beeline --outputformat=tsv |
+|--truncateTable=[true/false]| 在控制台展现超出长度会清楚掉 |         |
+|--delimiterForDSV= DELIMITER| 分隔字符 |    |
+|--isolation=LEVEL|  事务的隔离级别 |  beeline --isolation=TRANSACTION_SERIALIZABLE |
+|--nullemptystring=[true/false]|  将pull转为字符串或者NULL           | beeline --nullemptystring=false |
+|--incremental=[true/false]|  结果是否被缓存 |             |
+|--help| 显示usage  信息 | beeline --help  |
