@@ -89,17 +89,17 @@ eg:
 |------|------|------|
 |-u <database url>|  用于连接的jdbc url.| beeline -u db_URL |
 |-r|  重新连接最后一次连接的jdbc url| beeline -r|
-|```-n <username>```|  beeline 连接时使用的用户名 |beeline -n valid_user|
-|```-p <password>```|  beeline 连接时使用的密码  | beeline -p valid_password|
-|```-d <driver class> ```| 使用的drive class |beeline -d driver_class|
-|```-e <query>    ``` |查询语句 |  beeline -e "query_string" |
-|```-f <file> ```|需要执行的脚本文件 | beeline -f  filepath |
-|```-i (or)  --init <file or files>``` | 初始化脚本 | beeline -i /tmp/initfile |
-|```-w (or) --password-file <password file>```| 读取密码的文件|        |
-|```-a (or) --authType <auth type>```| 授权文件     |           |
-|```--property-file <file>``` |  配置文件 | beeline --property-file /tmp/a|
-|```--hiveconf property=value```| 设置特定的hive配置 | beeline --hiveconf prop1=value1|
-|```--hivevar name=value```|  hive 变量名和值 | beeline --hivevar var1=value1 |
+|-n <username>|  beeline 连接时使用的用户名 |beeline -n valid_user|
+|-p <password>|  beeline 连接时使用的密码  | beeline -p valid_password|
+|-d <driver class> | 使用的drive class |beeline -d driver_class|
+|-e <query> |查询语句 |  beeline -e "query_string" |
+|-f <file>|需要执行的脚本文件 | beeline -f  filepath |
+|-i (or)  --init <file or files>| 初始化脚本 | beeline -i /tmp/initfile |
+|-w (or) --password-file <password file>| 读取密码的文件|        |
+|-a (or) --authType <auth type>```| 授权文件     |           |
+|--property-file <file>``` |  配置文件 | beeline --property-file /tmp/a|
+|--hiveconf property=value```| 设置特定的hive配置 | beeline --hiveconf prop1=value1|
+|--hivevar name=value```|  hive 变量名和值 | beeline --hivevar var1=value1 |
 |```--color=[true/false]```|用于控制是否显示颜色，默认为false| beeline --color=true |
 |```--showHeader=[true/false]```| 查询结果是否显示表头 | beeline --showHeader=false|
 |```--headerInterval=ROWS```| 表头重复展现 | beeline --headerInterval=50 |
