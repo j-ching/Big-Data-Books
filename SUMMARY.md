@@ -20,6 +20,7 @@
     * [Spring-boot](Document_Spring/spring-boot.md)
 * [Zookeeper](Document_zookeeper/README.md)
     * [Zookeeper\_Java Example](Document_zookeeper/zookeeper_java-example.md)
+* [Hue](Document_Hue/README.md)
 
 ## 实例
 
