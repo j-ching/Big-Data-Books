@@ -32,3 +32,5 @@ apache的chukwa，facebook的scribe， cloudera的flume以及ELK stack(归属于
 + ES6新特征的引入， 如generator， promise等
 + bootstrap 开源框架的定制化改造，d3 图形引擎封装可视化图形工具
 + 实时计算 + socket服务 + socketIO 封装实时组件，应用场景包括服务接口监控，实时大屏等
+
+### 【实践】
