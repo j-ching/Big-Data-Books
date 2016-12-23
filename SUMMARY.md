@@ -1,7 +1,6 @@
 # Summary
 
 ## 文档
-* [前言](README.md)
 * [Spark1.6.0 学习文档](Document_Spark/README.md)
     * [Spark编译安装](Document_Spark/Document_spark编译安装.md)
     * [Spark安装及配置](Document_Spark/Document_spark安装及配置.md)
@@ -21,6 +20,9 @@
 * [Zookeeper](Document_zookeeper/README.md)
     * [Zookeeper\_Java Example](Document_zookeeper/zookeeper_java-example.md)
 * [Hue](Document_Hue/README.md)
+
+## 前言
+* [前言](README.md)
 
 ## 实例
 
