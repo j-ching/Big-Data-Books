@@ -22,7 +22,7 @@
 * [Hue](Document_Hue/README.md)
 
 ## 前言
-* [前言](README.md)
+* [简介](README.md)
 
 ## 实例
 
