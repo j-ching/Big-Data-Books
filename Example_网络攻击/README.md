@@ -4,4 +4,7 @@
 + **U2R**  unauthorized access to local superuser (root) privileges, e.g., various ``buffer overflow'' attacks;
 + **probing** surveillance and other probing, e.g., port scanning.
 
+# 网络连接的基本特性
+
+
 
