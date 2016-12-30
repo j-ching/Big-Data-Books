@@ -4,7 +4,18 @@
 + **U2R**  unauthorized access to local superuser (root) privileges, e.g., various ``buffer overflow'' attacks;
 + **probing** surveillance and other probing, e.g., port scanning.
 
-# 网络连接的基本特性
+# 特性分类
 
+## 网络连接的基本特征
 
-
+序号    |     特征        |    描述         |        类型
+-------|----------------|----------------|----------------
+1      | duration       | 
+2      | protocol_type  |
+3      | service        |
+4      | flag           |
+5      | src_bytes      |
+6      | dst_bytes      |
+7      | land           |
+8      | wrong_fragment |
+9      | urgent         |
