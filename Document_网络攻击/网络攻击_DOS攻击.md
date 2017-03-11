@@ -8,7 +8,7 @@ DoS即DenialOfService，拒绝服务的缩写，最常见的DoS攻击有对计�
 
 # DOS 攻击流程
 
-![TCP三次握手](https://github.com/GoingIO/docs/blob/master/Example_%E7%BD%91%E7%BB%9C%E6%94%BB%E5%87%BB/images/Picture3.png?raw=true)
+![Picture3](media/Picture3.png)
 
 
 # 攻击手段
@@ -55,3 +55,4 @@ DoS即DenialOfService，拒绝服务的缩写，最常见的DoS攻击有对计�
 ## tribalFloodNetwork 和 tfn2k
 
 ## stacheldraht
+
