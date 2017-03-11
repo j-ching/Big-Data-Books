@@ -1,7 +1,3 @@
-title: 日志收容框架Chukwa
-notebook: 启明星-服务框架
-tags: 日志收容, chukwa, 原创
-
 [TOC]
 
 ## chukwa
@@ -54,3 +50,5 @@ chukwa Pipeline 的职责是接收从agent 过来的数据， 提取，输入到
 
 
 [chukwa](http://chukwa.apache.org/)
+
+

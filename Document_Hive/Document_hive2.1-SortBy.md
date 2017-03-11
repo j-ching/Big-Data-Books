@@ -1,7 +1,3 @@
-title: hive2.1-SortBy
-notebook: 技术相关
-tags: hive
-
 [TOC]
 
 # Order, Sort, Cluster, and Distribute By
@@ -35,3 +31,5 @@ Null排序为desc则为```NULLS LAST```
 
 ### sort by 与 order by的不同
 sort by支持对每个reduce的数据进行排序， 他们之间的不同在于， ```order by``` 保证了在整个输出的数据是有序的，而```sort by ``` 只是对每个reduce的数据进行排序，如果有多个reduce， ```sort by ```只能保证最后结果的部分有序
+
+

@@ -1,3 +1,5 @@
+[TOC]
+
 在druid集群中，coordinate nodes 通过规则来决定什么数据需要被load，或者什么数据需要从集群删除。 规则通过数据保存，并发送到coordinator console(http://coordinator_ip:port)来执行
 
 规则指定了：
@@ -10,3 +12,4 @@ coordinate 从metadatastorage中加载一系列的规则。规则中可以指定
 注意，规则的配置可以通过coordinate控制台，也可以在coordinate node上通过http endpoint来配置规则
 
 当规则更新后，等下coordinate下一次运行时才会生效。
+

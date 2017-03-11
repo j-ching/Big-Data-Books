@@ -1,4 +1,4 @@
-
+[TOC]
 
   1. 数据
 
@@ -70,3 +70,4 @@
 调整mapreduce 内存参数
 
   16. rebuild index
+

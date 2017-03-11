@@ -1,7 +1,3 @@
-title: Logstash客户端安装
-tags: 原创, 日志收容
-notebook: 技术相关
-
 [TOC]
 
 
@@ -81,3 +77,5 @@ LogStash Pipeline 包括一个或者多个input, filter 和output。 启动logst
 	}
 3. logstash默认将数据源读取的游标值记录在$HOME/.sincedb*, 如果希望从头开始读，需要删除该文件，或者重新设置 ```sincedb_path```
 4. logstash日期种类
+
+

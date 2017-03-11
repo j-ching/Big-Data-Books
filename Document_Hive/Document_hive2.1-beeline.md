@@ -1,7 +1,3 @@
-title: hive2.1-beeline
-notebook: 技术相关
-tags: hive2.1, beeline
-
 [TOC]
 
 # Beeline 命令行
@@ -122,3 +118,5 @@ eg:
 |--nullemptystring=[true/false]|  将pull转为字符串或者NULL           | beeline --nullemptystring=false |
 |--incremental=[true/false]|  结果是否被缓存 |             |
 |--help| 显示usage  信息 | beeline --help  |
+
+

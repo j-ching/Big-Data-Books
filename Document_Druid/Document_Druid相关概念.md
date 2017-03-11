@@ -1,3 +1,5 @@
+[TOC]
+
 **Data**
 
 druid的数据格式和关系型数据库数据较为类似， 如下：
@@ -110,3 +112,5 @@ druid集群需要依赖：
 **Metadata Storage** 用户存储segment，configuration 等的metadata信息； 服务创建segments后，会向metadatastore中写一个新的标记， coordinatenode监控metadatastore来获取有哪些新的数据需要被重新load，或者有哪些旧的数据需要被去除。查询的时候并不需 要metadatastor的数据。 在生产集群中，mysql 和postgresql是比较常用的metadatastor， derby可以用于单机测试环境
 
 **Deep Storage** deepstorage作为segments一种持久的备份。 服务创建segments后，上传到deepstore。 coordinatenode从deepstorage下载segments。查询的时候也不会用到deepstorage。 常用的deepstorage有S3和hdfs。
+
+

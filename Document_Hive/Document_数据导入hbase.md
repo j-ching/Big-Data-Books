@@ -1,7 +1,3 @@
-title: 数据导入hbase
-tags: hbase
-notebook: 糖豆
-
 [TOC]
 
 ## 通过hive 外部表(external table) 来做关联
@@ -306,3 +302,5 @@ select concat('20160908', '_', orignrowkey),orignrowkey, xinges,client,vid,vid_n
 from test_push_video_recommend_final
 
 ```
+
+

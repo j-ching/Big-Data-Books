@@ -1,7 +1,3 @@
-title: hive2.1 的安装和配置
-notebook: 技术相关
-tags: hive
-
 [TOC]
 
 目前hive的最新版本是2.1.0， 你可以下载tar包安装，也可以通过源码编译安装
@@ -403,3 +399,5 @@ hive的文件根目录可以在hive-site.xml中的```hive.metastore.warehouse.di
 **创建外部表的时候，location指明数据文件的目录，目录中包含数据文件**
 
 ### hive表metadata中文乱码的问题解决
+
+

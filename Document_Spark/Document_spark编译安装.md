@@ -1,7 +1,3 @@
-title: spark 编译
-notebook: 技术相关
-tags: spark
-
 [TOC]
 
 # 编译Apache Spark
@@ -140,3 +136,5 @@ sbt的构建也是源于maven的pom文件，所以sbt构建的时候使用和mav
 在project/SparkBuild.scala中添加
 
 	scalacOptions in Compile ++= Seq("-Xmax-classfile-name", "128"),
+
+

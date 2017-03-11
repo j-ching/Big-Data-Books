@@ -1,7 +1,3 @@
-title: 日志收容框架scribe
-notebook: 技术相关
-tags: 日志收容, scribe
-
 [TOC]
 
 ## 简介
@@ -25,3 +21,5 @@ scribe 是Facebook开源的日志收集系统，在facebook内部被广泛使用
 
 
 [scribe](https://github.com/facebookarchive/scribe/wiki/Scribe-Overview)
+
+

@@ -1,7 +1,3 @@
-Title: Spark ALS最小二乘法
-Tags: spark,算法
-Notebook: 技术相关
-
 [TOC]
 
 ## 相关指标
@@ -13,3 +9,5 @@ AUC指标也用于评分分类器， MLlib的BinaryClassificationMetrics 类实�
 其他的评分系统相关的评价指标在RankingMetrics类中实现， 这些指标包括准确率，召回率和平均准确率(Mean Average Precision, MAP), MAP更强调排在最前面的推荐的质量
 
 通常数据被分为三个子集: 训练集， 检验(CV)集， 测试集
+
+

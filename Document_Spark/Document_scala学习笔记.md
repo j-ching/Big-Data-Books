@@ -1,7 +1,3 @@
-title: scala学习笔记
-notebook: 技术相关
-tags: scala
-
 [TOC]
 
 # 语法要点
@@ -141,3 +137,5 @@ println(s"$name is ${age + 2} years old.")
 
 ##### 插值器raw
 插值器raw和插值器s相似，不同的是它不对字符串字面量执行转义
+
+

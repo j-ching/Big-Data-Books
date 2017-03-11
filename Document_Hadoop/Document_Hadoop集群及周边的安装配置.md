@@ -1,7 +1,4 @@
-title: hadoop 集群及周边的安装配置
-tags: HBase, hadoop, hive, hue
-notebook: 技术相关
-
+[TOC]
 
 # 版本选择
 + flume-ng-1.6.0-cdh5.8.0.tar.gz
@@ -651,3 +648,5 @@ jps检查是否有journalnode 进程
 ### 启动spark集群
 
 	sbin/start-all.sh
+
+

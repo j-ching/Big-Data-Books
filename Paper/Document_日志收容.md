@@ -1,7 +1,3 @@
-title: 日志收容
-notebook: 技术相关
-tags: flume-ng, logstash, chukwa, scribe,  原创
-
 [TOC]
 
 ## 简介
@@ -127,3 +123,5 @@ broker对topic的管理是基于顺序读写磁盘文件而实现的，在kafka�
 
 
 我相信大家现在对这几种框架有了初步的了解了，在开始自己的数据分析之旅前，请根据自己的业务需要，选择合适的收集框架。
+
+

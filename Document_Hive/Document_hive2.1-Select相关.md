@@ -1,7 +1,3 @@
-title: hive2.1-Select相关
-notebook: 技术相关
-tags: hive
-
 [TOC]
 
 # Select Syntax
@@ -101,3 +97,5 @@ table创建分区之后，查询可以在每个分区上运行， 而且只会�
 在hive0.13.0之前的版本，默认支持column上的正在表达式， 在0.13.0之后，需要配置资源文件 ```hive.support.quoted.identifiers ``` 为 none
 
     SELECT `(ds|hr)?+.+` FROM sales
+
+

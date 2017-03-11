@@ -1,7 +1,3 @@
-title: hive2.1- hiveserver2
-notebook: 技术相关
-tags: hive, hive2.1, hiveserver2
-
 [TOC]
 
 # HiveServer2
@@ -63,3 +59,5 @@ metastore可以是内嵌的数据库，也可以是远程的数据库。 HS2 使
 
 + **org.apache.hive.service.cli.SessionHandle class**: Session identifier. Instances of this class are returned from the server and used by the client as input for Thrift API calls.
 + **org.apache.hive.service.cli.OperationHandle class**: Operation identifier. Instances of this class are returned from the server and used by the client to poll the execution status of an operation.
+
+

@@ -1,7 +1,3 @@
-title: Spark Overview
-notebook: 技术相关
-tags: spark
-
 [TOC]
 
 Apache Spark 是一个快速的分布式计算系统，它针对java，scala, python 和 R 提供了高水平的api， 同时也提供了支持图计算的引擎。 spark还提供了一系列工具，如spark sql 用于通过sql处理结构化数据， mlib用于机器学习， graphx用于图形处理， 还有spark streaming.
@@ -26,3 +22,5 @@ Apache Spark 是一个快速的分布式计算系统，它针对java，scala, py
 
 
 如果你需要从源码中构建spark， 请查看[这里](http://spark.apache.org/docs/1.6.0/building-spark.html)
+
+

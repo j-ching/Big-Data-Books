@@ -1,7 +1,3 @@
-title: Apache Yarn学习笔记
-notebook: 技术相关
-tags: yarn
-
 [TOC]
 
 Yarn 最基本的想法是将资源管理的功能与job调度与监控的功能分放在不同的领域。 以此为基础， 就产生了全局的ResourceManager(RM)和针对每个应用的ApplicationMaster(AM)。这里的应用包括单独的job或者多个job的有向无环图。
@@ -64,3 +60,5 @@ Launch containers. Communicate with NodeManagers by using NMClientAsync objects,
 	yarnClient.start();
 
 	```
+
+

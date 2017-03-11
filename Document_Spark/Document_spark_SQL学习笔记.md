@@ -1,7 +1,3 @@
-title: spark SQL学习笔记
-notebook: 技术相关
-tags: spark
-
 [TOC]
 
 # Overview
@@ -400,3 +396,5 @@ spark SQL 也可以通过jdbc从其他的数据源中读取数据， 通过```Jd
 
 
 	val jdbcDF = sqlContext.read.format("jdbc").options(Map("url" -> "jdbc:postgresql:dbserver", "dbtable" -> "schema.tablename")).load()
+
+

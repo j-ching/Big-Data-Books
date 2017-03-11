@@ -1,7 +1,3 @@
-title: Mongdb 问题排查
-tags: mongo
-notebook: 技术相关
-
 [TOC]
 
 #### mongostat 查看mongo的各指标
@@ -227,3 +223,5 @@ notebook: 技术相关
 
 
 http://blog.csdn.net/hjxhjh/article/details/12611195
+
+

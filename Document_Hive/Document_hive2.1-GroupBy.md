@@ -1,7 +1,3 @@
-title: hive2.1-GroupBy
-notebook: 技术相关
-tags: hive
-
 [TOC]
 
 # Group By Syntax
@@ -129,3 +125,5 @@ WITH CUBE/ROLLUP 只能用于Group by环境下， Cube 用group by的列集创�
 grouping sets/rollup/cubes 都是导致一个mr的任务被加载，类如： ```select a, b, c, count(1) from T group by a, b, c with rollup;``` ， 每行数据都是生成四行 (a,b,c), (a,b,null), (a, null, null), (null,null,null), 当table T 容量很大的时候，在mr的过程中就会造成数据膨胀， map端的聚合将不能完成。
 
 这个参数决定了hive是否需要增加一个mr的job。如果group set的基础远大于这个值，则hive就会添加一个附加的mr在原始的数据上，用于削减数据量。
+
+
