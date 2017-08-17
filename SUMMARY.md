@@ -29,7 +29,7 @@
   * [Spark-Streaming](Document_Spark/Document_Spark_Streaming/README.md)
     * [Spark Streaming Custom Receivers](Document_Spark/Document_Spark_Streaming/spark-streaming-custom-receivers.md)
   * [Spark-MLlib](Document_Spark/Document_Spark_MLlib/README.md)
-     * [基础统计](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-基础统计.md)
+    * [基础统计](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-基础统计.md)
     * [分类回归](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-分类和回归.md)
     * [特征提取](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-特征提取.md)
     * [数据类型](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-数据类型.md)
