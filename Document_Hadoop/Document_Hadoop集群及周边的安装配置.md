@@ -631,7 +631,7 @@ jps检查是否有journalnode 进程
 #### 修改spark-env.sh, 设置
 
 	export JAVA_HOME=/opt/jdk1.7.0_79
-	expor=/data/hadoop/hadoop-2.6.0-cdh5.8.0
+	export HADOOP_DIR=/data/hadoop/hadoop-2.6.0-cdh5.8.0
 	export HADOOP_CONF_DIR=/data/hadoop/hadoop-2.6.0-cdh5.8.0/etc/hadoop
 	export SPARK_CLASSPATH=$SPARK_CLASSPATH:/data/hadoop/hadoop-2.6.0-cdh5.8.0/share/hadoop/common/*:/data/hadoop/hadoop-2.6.0-cdh5.8.0/share/hadoop/common/lib/*:/data/hadoop/hadoop-2.6.0-cdh5.8.0/share/hadoop/yarn/*:/data/hadoop/hadoop-2.6.0-cdh5.8.0/share/hadoop/yarn/lib/*:/data/hadoop/spark-1.6.0-cdh5.8.0/lib/*:/data/hadoop/hive-1.1.0-cdh5.8.0/lib/*:/data/hadoop/hbase-1.2.0-cdh5.8.0/lib/*
 
