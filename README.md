@@ -1,42 +1,61 @@
-[TOC]
+# Summary
 
-# 简介
+## 前言
 
-在闲暇之余，对自己的知识框架做了整理，总结经验，与大家分享
+* [简介](README.md)
 
-## 数据方向
+## 文档
 
-##### 数据收容
-apache的chukwa，facebook的scribe， cloudera的flume以及ELK stack(归属于Elastic.co公司)组合中的logstash等常用数据收容框架的使用及架构设计； databus设计思路及目前比较流行的数据总线(如linked的kafka以及Ali的TT)使用和实现；利用数据总线实现大吞吐高并发的数据收容框架；
+* [Logstash](Document_Logstash/README.md)
+  * [agent安装](Document_Logstash/Document_Logstash客户端安装.md)
+* [Hadoop](Document_Hadoop/README.md)
+  * [环境安装](Document_Hadoop/Document_Hadoop集群及周边的安装配置.md)
+  * [shuffle参数调优](Document_Hadoop/Document_MR-Shuffle阶段相关参数.md)
+* [Hive](Document_Hive/README.md)
+  * [安装与配置](Document_Hive/Document_hive2.1的安装和配置.md)
+  * [hiveserver2](Document_Hive/Document_hive2.1的安装和配置.md)
+  * [beeline](Document_Hive/Document_hive2.1-beeline.md)
+  * [hcatalog](Document_Hive/Document_hive2.1-hcatalog.md)
+  * [Transform](Document_Hive/Document_hive2.1-Transform.md)
+  * [Select](Document_Hive/Document_hive2.1-Select相关.md)
+  * [GroupBy](Document_Hive/Document_hive2.1-GroupBy.md)
+  * [SortBy](Document_Hive/Document_hive2.1-SortBy.md)
+  * [hbase导入](Document_Hive/Document_数据导入hbase.md)
+* [Spark1.6.0 学习文档](Document_Spark/README.md)
+  * [Spark编译安装](Document_Spark/Document_spark编译安装.md)
+  * [Spark安装及配置](Document_Spark/Document_spark安装及配置.md)
+  * [Spark客户端配置](Document_Spark/Document_spark客户端配置.md)
+  * [Spark-SQL](Document_Spark/Document_spark_SQL学习笔记.md)
+  * [Spark-Streaming](Document_Spark/Document_Spark_Streaming/README.md)
+    * [Spark Streaming Custom Receivers](Document_Spark/Document_Spark_Streaming/Document_Spark_Streaming_Custom_Receivers.md)
+  * [Spark-MLlib](Document_Spark/Document_Spark_MLlib/README.md)
+    * [基础统计](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-基础统计.md)
+    * [分类回归](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-分类和回归.md)
+    * [特征提取](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-特征提取.md)
+    * [数据类型](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-数据类型.md)
+    
+* [Druid 学习文档](Document_Druid/README.md)
+  * [OLAP简介](Document_Druid/Document_OLAP简介.md)
+  * [提纲](Document_Druid/Document_Druid学习提纲.md)
+  * [相关概念](Document_Druid/Document_Druid相关概念.md)
+  * [单机环境](Document_Druid/Document_Druid单机环境.md)
+  * [数据导入](Document_Druid/Document_Druid数据导入.md)
+  * [数据维护及删除](Document_Druid/Document_Druid数据维护及删除.md)
+  * [索引服务](Document_Druid/Document_Druid索引服务.md)
+  * [集群环境](Document_Druid/Document_Druid集群.md)
+* [Spring](Document_Spring/README.md)
+  * [Spring-boot](Document_Spring/spring-boot.md)
+* [Zookeeper](Document_zookeeper/README.md)
+  * [基本概念](Document_zookeeper/Document_Apache_Zookeeper学习笔记.md)
+  * [Zookeeper\_Java Example](Document_zookeeper/zookeeper_java-example.md)
+* [Hue](Document_Hue/README.md)
+* [Yarn](Document_Yarn/README.md)
+  * [简介](Document_Yarn/Document_Apache_Yarn学习笔记.md)
+* [Docker](Document_Docker/README.md)
+  * [简介](Document_Docker/overview.md)
 
-##### 数据统计分析
+## 案例
 
-数据的清洗，处理；数据仓库的设计和构建；OLAP 服务的实现；较为流行的OLAP框架(如mondrian, Presto(facebook)，kylin(apache),  Lylin(ebay)、pinot(linkedin)和druid等)的了解和使用；深入理解OLAP框架的设计和实现；hadoop及hadoop生态系统的了解和使用，包括分布式文件系统，如GFS、HDFS等，分布式计算框架，如hadoop的mr离线结算框架，spark的批处理计算框架以及storm的流失计算框架等， 分布式资源管理框架，如yarn，mesos等，分布式调度框架，如zk等；hive，hbase，impala，pig，sqoop，elk等周边工具的研究和使用。分布式工作流框架，如azkaban, ozzie 的理解和使用。
-
-##### 数据挖掘
-
-接触到了一些常用的机器学习的算法，包括：逻辑回归，线性SVM，随机森林，梯度渐进决策树(回归)和地图渐进决策树（分类），朴素贝叶斯，K近邻，线性回归等。（由于本人愚笨，目前只停留在简单的使用)
-其他： 涉及到一些gis相关的知识点，如空间索引
-
-### 服务方向
-
-+ RPC服务的设计和使用
-+ SOCKET服务在实时系统中的应用
-+ Actor模型的深入理解，以及akka框架的应用
-+ 分布式数据同步中间件的设计，以及datax的实现架构及使用
-+ 分布式缓存，分布式一致性的设计思路，以及tair的实现架构及使用
-+ 分布式配置中心的实现，以及zk在分布式服务中的使用场景
-+ 分布式环境下的负载均衡
-+ 分布式场景下的事务JTA
-
-### 前端方向
-
-+ 前段开发中的AMD，CMD模式
-+ HTML5+CSS3
-+ nodejs 前端服务架构(npm + gulp/grunt + less + pm2)
-+ socketio 实现实时展现
-+ ES6新特征的引入， 如generator， promise等
-+ bootstrap 开源框架的定制化改造，d3 图形引擎封装可视化图形工具
-+ 实时计算 + socket服务 + socketIO 封装实时组件，应用场景包括服务接口监控，实时大屏等
-
+* [网络攻击分析](Document_网络攻击/README.md)
+  * [DOS攻击](Document_网络攻击/网络攻击_DOS攻击.md)
 
