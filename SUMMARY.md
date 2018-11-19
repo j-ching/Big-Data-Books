@@ -6,8 +6,7 @@
 
 ## 存储框架
 
-* \[服务器体系架构\]\(Document\_MPP/README.md\)
-
+* 
 * [Druid 学习文档](Document_Druid/README.md)
 
 * * [OLAP简介](Document_Druid/Document_OLAP简介.md)
