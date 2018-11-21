@@ -17,7 +17,7 @@
 
 # 准备
 
-	10.19.138.198   thadoop-uelrcx-host1					 namenode  			resourcemanager	 hmaster		hiveserver2		master
+	10.19.138.198   thadoop-uelrcx-host1 namenode   resourcemanager hmaster		hiveserver2		master
 	10.19.134.88    thadoop-uelrcx-host2	zk journalnode   namenode/datanode  nodemanager		 regionserver					worker
 	10.19.164.182   thadoop-uelrcx-host3	zk journalnode   datanode  			nodemanager		 regionserver					worker
 	10.19.78.105    thadoop-uelrcx-host4	zk journalnode   datanode  			nodemanager		 regionserver					worker
