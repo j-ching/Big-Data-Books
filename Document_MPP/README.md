@@ -2,6 +2,10 @@
 
 ## 背景
 
+
+
+
+
 从系统架构来看，目前的商用服务器大体可以分为三类
 
 * 对称多处理器结构\(SMP：Symmetric Multi-Processor\)
@@ -35,6 +39,6 @@
 
 
 http://www.itboth.com/d/AJ3U3u/processing
-
+https://segmentfault.com/a/1190000007419222
 https://www.smwenku.com/a/5b957dd32b717750bda4b2e0/zh-cn/
 
