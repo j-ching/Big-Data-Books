@@ -50,27 +50,18 @@
     * [数据类型](Document_Spark/Document_Spark_MLlib/Document_Spark_MLLib学习笔记-数据类型.md)
 
 * [Spring](Document_Spring/README.md)
-
   * [Spring-boot](Document_Spring/spring-boot.md)
-
 * [Zookeeper](Document_zookeeper/README.md)
-
   * [基本概念](Document_zookeeper/Document_Apache_Zookeeper学习笔记.md)
   * [Zookeeper\_Java Example](Document_zookeeper/zookeeper_java-example.md)
-
 * [Hue](Document_Hue/README.md)
-
 * [Yarn](Document_Yarn/README.md)
-
   * [简介](Document_Yarn/Document_Apache_Yarn学习笔记.md)
-
 * [Docker](Document_Docker/README.md)
-
   * [简介](Document_Docker/overview.md)
-  
 * [Graph Database](Document_GraphDatabase/graph_database.md) 
- * [简介](Document_GraphDatabase/graph_database.md)
- * [Titan](Document_GraphDatabase/graph_database_titan.md)
+  * [简介](Document_GraphDatabase/graph_database.md)
+  * [Titan](Document_GraphDatabase/graph_database_titan.md)
 
 ## 案例
 
